@@ -17,6 +17,10 @@ Other than that, it's a self-contained repo. Please feel free to raise an issue 
 
 
 
+https://github.com/user-attachments/assets/1aecd2d1-8e16-499e-98ce-a1667be5114d
+
+Left: Original rendering, Mid: Extraction, Right: Deletion
+
 Sample data (garden) can be found [here](https://drive.google.com/file/d/1cEPby9zWgG40dJ4eRiHu15Jdg7FgvTdG/view?usp=sharing). Please create a folder named `data` on root folder and extract the contents of zip file to that folder.
 
 To backproject the features run 
