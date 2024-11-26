@@ -26,7 +26,7 @@ Sample data (garden) can be found [here](https://drive.google.com/file/d/1cEPby9
 To backproject the features run 
 
 ```bash
-python demo.py --help
+python transfer.py --help
 ```
 
 Once backprojection is completed, run the following to see the segmenation results.
