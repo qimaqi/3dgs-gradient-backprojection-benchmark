@@ -1,0 +1,8 @@
+gsplat
+ultralytics
+git+https://github.com/JojiJoseph/pycolmap-scene-manager.git # To not conflict with python binding of colmap
+tyro
+natsort
+git+https://github.com/ultralytics/CLIP.git
+opencv-python
+https://github.com/krrish94/lseg-minimal.git
