@@ -23,11 +23,15 @@ Left: Original rendering, Mid: Extraction, Right: Deletion
 
 Sample data (garden) can be found [here](https://drive.google.com/file/d/1cEPby9zWgG40dJ4eRiHu15Jdg7FgvTdG/view?usp=sharing). Please create a folder named `data` on root folder and extract the contents of zip file to that folder.
 
+**Backprojection**
+
 To backproject the features run 
 
 ```bash
 python transfer.py --help
 ```
+
+**Segmentation**
 
 Once backprojection is completed, run the following to see the segmenation results.
 
@@ -37,6 +41,17 @@ python segment.py --help
 
 
 Trained Mip-NeRF 360 Gaussian splat models (using [gsplat](https://github.com/nerfstudio-project/gsplat) with data factor = 4) can be found [here](https://drive.google.com/file/d/1ZCTgAE6vZOeUBdR3qPXdSPY01QQBHxeO/view?usp=sharing). Extract them to `data` folder.
+
+
+**Click and Select**
+
+```bash
+python click_and_select.py
+```
+
+Click left button to select positive visual prompts and middle button to select negative visual prompts. `ctrl+lbutton` and `ctrl+mbutton` to remove selected prompts.
+
+
 
 ## Acknowledgements
 
