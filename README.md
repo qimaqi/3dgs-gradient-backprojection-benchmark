@@ -43,10 +43,16 @@ python segment.py --help
 Trained Mip-NeRF 360 Gaussian splat models (using [gsplat](https://github.com/nerfstudio-project/gsplat) with data factor = 4) can be found [here](https://drive.google.com/file/d/1ZCTgAE6vZOeUBdR3qPXdSPY01QQBHxeO/view?usp=sharing). Extract them to `data` folder.
 
 
-**Click and Select**
+**Application - Click and Segment**
+
+
+
+https://github.com/user-attachments/assets/3f1c797f-db29-416f-8917-9be7885231b5
+
+
 
 ```bash
-python click_and_select.py
+python click_and_segment.py
 ```
 
 Click left button to select positive visual prompts and middle button to select negative visual prompts. `ctrl+lbutton` and `ctrl+mbutton` to remove selected prompts.
