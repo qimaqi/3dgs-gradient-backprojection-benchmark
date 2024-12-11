@@ -338,6 +338,10 @@ def create_feature_field_lseg(splats, batch_count = 1):
             gaussian_features += colors_feats_copy
             gaussian_denoms += colors_feats_0.grad[:, 0]
             colors_feats_0.grad.zero_()
+
+            # Clean up unused variables and free GPU memory
+            del viewmat, meta, _, output, feats, output_for_grad, colors_feats_copy, target, target_0
+            torch.cuda.empty_cache()
     gaussian_features = gaussian_features / gaussian_denoms[..., None]
     gaussian_features = gaussian_features / gaussian_features.norm(dim=-1, keepdim=True)
     # Replace nan values with 0
