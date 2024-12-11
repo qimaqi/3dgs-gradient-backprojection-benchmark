@@ -219,7 +219,9 @@ def test_proper_pruning(splats, splats_after_pruning):
     )
 
 
-def create_feature_field_lseg(splats, batch_count = 1):
+def create_feature_field_lseg(splats, batch_count = 1, use_cpu=False):
+    device = "cpu" if use_cpu else "cuda"
+
     net = LSegNet(
         backbone="clip_vitl16_384",
         features=256,
@@ -229,9 +231,9 @@ def create_feature_field_lseg(splats, batch_count = 1):
         activation="lrelu",
     )
     # Load pre-trained weights
-    net.load_state_dict(torch.load("./checkpoints/lseg_minimal_e200.ckpt"))
+    net.load_state_dict(torch.load("./checkpoints/lseg_minimal_e200.ckpt", map_location=device))
     net.eval()
-    net.cuda()
+    net.to(device)
 
     means = splats["means"]
     colors_dc = splats["features_dc"]
@@ -240,6 +242,9 @@ def create_feature_field_lseg(splats, batch_count = 1):
 
     colors = colors_dc[:, 0, :]  # * 0
     colors_0 = colors_dc[:, 0, :] * 0
+    colors.to(device)
+    colors_0.to(device)
+
     colmap_project = splats["colmap_project"]
 
     opacities = torch.sigmoid(splats["opacity"])
@@ -254,10 +259,8 @@ def create_feature_field_lseg(splats, batch_count = 1):
 
     t1 = time.time()
 
-    colors_feats = torch.zeros(colors.shape[0], 512, device=colors.device)
-    colors_feats.requires_grad = True
-    colors_feats_0 = torch.zeros(colors.shape[0], 3, device=colors.device)
-    colors_feats_0.requires_grad = True
+    colors_feats = torch.zeros(colors.shape[0], 512, device=colors.device, requires_grad=True)
+    colors_feats_0 = torch.zeros(colors.shape[0], 3, device=colors.device, requires_grad=True)
 
     images = sorted(colmap_project.images.values(), key=lambda x: x.name)
     batch_size = math.ceil(len(images) / batch_count) if batch_count > 0 else 1
@@ -288,10 +291,11 @@ def create_feature_field_lseg(splats, batch_count = 1):
                 )
 
                 output = torch.nn.functional.interpolate(
-                    output.permute(0, 3, 1, 2).cuda(),
+                    output.permute(0, 3, 1, 2).to(device),
                     size=(480, 480),
                     mode="bilinear",
                 )
+                output.to(device)
                 feats = net.forward(output)
                 feats = torch.nn.functional.normalize(feats, dim=1)
                 feats = torch.nn.functional.interpolate(
@@ -311,12 +315,10 @@ def create_feature_field_lseg(splats, batch_count = 1):
                 height=height,
             )
 
-            target = (output_for_grad[0] * feats).sum()
-
+            target = (output_for_grad[0].to(device) * feats).sum()
+            target.to(device)
             target.backward()
-
             colors_feats_copy = colors_feats.grad.clone()
-
             colors_feats.grad.zero_()
 
             output_for_grad, _, meta = rasterization(
@@ -332,7 +334,7 @@ def create_feature_field_lseg(splats, batch_count = 1):
             )
 
             target_0 = (output_for_grad[0]).sum()
-
+            target_0.to(device)
             target_0.backward()
 
             gaussian_features += colors_feats_copy
