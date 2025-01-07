@@ -405,7 +405,7 @@ def main(
 
     if export_checkpoint:
         save_to_ckpt(
-            f"{results_dir}/deleted.pt",
+            f"{results_dir}/extracted.pt",
             extracted
         )
         save_to_ckpt(
