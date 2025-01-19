@@ -166,3 +166,11 @@ def create_checkerboard(width, height, size=64):
             else:
                 checkerboard[y : y + size, x : x + size] = 128
     return checkerboard
+
+
+def torch_to_cv(tensor, permute=False):
+    if permute:
+        tensor = torch.clamp(tensor.permute(1, 2, 0), 0, 1).cpu().numpy()
+    else:
+        tensor = torch.clamp(tensor, 0, 1).cpu().numpy()
+    return (tensor * 255).astype(np.uint8)[..., ::-1]
