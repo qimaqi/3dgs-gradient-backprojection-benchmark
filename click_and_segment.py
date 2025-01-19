@@ -88,20 +88,23 @@ class UIManager:
         """
         ctrl_pressed = flags & cv2.EVENT_FLAG_CTRLKEY
         trigger = False
+        xy = None
         if event == cv2.EVENT_LBUTTONDOWN:
             if ctrl_pressed:
                 self._remove_prompt(self.positive_prompt_locations, x, y)
             else:
                 self.positive_prompt_locations.append((x, y))
+                xy = (x, y, 1)
             trigger = True
         elif event == cv2.EVENT_MBUTTONDOWN:
             if ctrl_pressed:
                 self._remove_prompt(self.negative_prompt_locations, x, y)
             else:
                 self.negative_prompt_locations.append((x, y))
+                xy = (x, y, -1)
             trigger = True
         if trigger:
-            self._trigger_callback()
+            self._trigger_callback(xy)
 
     def _remove_prompt(self, locations, x, y):
         """
@@ -201,7 +204,9 @@ def main(
 
     mask_3d = None
 
-    def trigger_callback():
+    positions_3d = []
+
+    def trigger_callback(xy=None):
         params = ui_manager.get_params()
 
         nonlocal positive_prompt_locations
@@ -238,9 +243,23 @@ def main(
             width=width,
             height=height,
             # sh_degree=3,
+            render_mode="RGB+D",
         )
 
-        output = output[0]
+        output, depth = output[0,...,:512],output[0,...,512]
+        print("depth.shape",depth.shape)
+        # depth = output[0,3]
+        fx = K[0, 0]
+        fy = K[1, 1]
+        cx = K[0, 2]
+        cy = K[1, 2]
+        if xy is not None:
+            print(depth.shape)
+            Z = depth[xy[1], xy[0]]
+            XY = torch.tensor([(xy[0]-cx)/fx*Z, (xy[1]-cy)/fy*Z,Z,1.0]).float().to(device)
+            XY = XY.reshape(4,1)
+            XY_world = torch.inverse(viewmat) @ XY
+            positions_3d.append(XY_world.cpu().numpy())
         output = torch.nn.functional.normalize(output, dim=-1)
 
         positive_prompts = []
@@ -337,6 +356,24 @@ def main(
             output_cv = cv2.hconcat([output_cv, output_cv2, output_cv3])
             for x, y in ui_manager.positive_prompt_locations:
                 cv2.circle(output_cv, (x, y), 20, (0, 255, 0), -1)
+            fx = K[0, 0]
+            fy = K[1, 1]
+            cx = K[0, 2]
+            cy = K[1, 2]
+            viewmat = viewmat.cpu().numpy()
+            for x, y, z,_ in positions_3d:
+                x = x.item()
+                y = y.item()
+                z = z.item()
+                x1 = viewmat[0, 0]*x + viewmat[0, 1]*y + viewmat[0, 2]*z + viewmat[0, 3]
+                y1 = viewmat[1, 0]*x + viewmat[1, 1]*y + viewmat[1, 2]*z + viewmat[1, 3]
+                z1 = viewmat[2, 0]*x + viewmat[2, 1]*y + viewmat[2, 2]*z + viewmat[2, 3]
+                x = x1*fx + cx*z1
+                y = y1*fy + cy*z1
+                x = int(x / z1)
+                y = int(y / z1)
+                print(x,y)
+                cv2.circle(output_cv, (x, y), 20, (255, 0, 0), -1)
             for x, y in ui_manager.negative_prompt_locations:
                 cv2.circle(output_cv, (x, y), 20, (0, 0, 255), -1)
             cv2.imshow("Click and Segment", output_cv)
