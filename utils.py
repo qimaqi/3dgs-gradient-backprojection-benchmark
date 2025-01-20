@@ -13,6 +13,7 @@ def _detach_tensors_from_dict(d, inplace=True):
             d[key] = d[key].detach()
     return d
 
+
 def load_checkpoint(
     checkpoint: str,
     data_dir: str,
@@ -102,6 +103,7 @@ def get_rpy_matrix(roll, pitch, yaw):
 
     return yaw_matrix @ pitch_matrix @ roll_matrix
 
+
 def get_viewmat_from_colmap_image(image):
     viewmat = torch.eye(4).float()  # .to(device)
     viewmat[:3, :3] = torch.tensor(image.R()).float()  # .to(device)
@@ -166,3 +168,11 @@ def create_checkerboard(width, height, size=64):
             else:
                 checkerboard[y : y + size, x : x + size] = 128
     return checkerboard
+
+
+def torch_to_cv(tensor, permute=False):
+    if permute:
+        tensor = torch.clamp(tensor.permute(1, 2, 0), 0, 1).cpu().numpy()
+    else:
+        tensor = torch.clamp(tensor, 0, 1).cpu().numpy()
+    return (tensor * 255).astype(np.uint8)[..., ::-1]
