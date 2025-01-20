@@ -16,6 +16,17 @@ device = torch.device("cuda:0")
 
 
 
+def calculate_3d_to_2d(viewmat, fx, fy, cx, cy, position_homo):
+    x, y, z, _ = position_homo
+    x = x.item()
+    y = y.item()
+    z = z.item()
+    x1 = viewmat[0, 0] * x + viewmat[0, 1] * y + viewmat[0, 2] * z + viewmat[0, 3]
+    y1 = viewmat[1, 0] * x + viewmat[1, 1] * y + viewmat[1, 2] * z + viewmat[1, 3]
+    z1 = viewmat[2, 0] * x + viewmat[2, 1] * y + viewmat[2, 2] * z + viewmat[2, 3]
+    x = x1 * fx + cx * z1
+    y = y1 * fy + cy * z1
+    return int(x / z1), int(y / z1)
 
 
 
@@ -371,18 +382,18 @@ def main(
             output_cv = torch_to_cv(output[0])
 
             if mask_3d is not None:
-                opacities_new = opacities.clone()
-                opacities_new2 = opacities.clone()
-                opacities_new[~mask_3d] = 0
-                opacities_new2[mask_3d] = 0
+                opacities_extracted = opacities.clone()
+                opacities_deleted = opacities.clone()
+                opacities_extracted[~mask_3d] = 0
+                opacities_deleted[mask_3d] = 0
             else:
-                opacities_new = opacities
-                opacities_new2 = opacities
+                opacities_extracted = opacities
+                opacities_deleted = opacities * 0
             output, alphas, meta = rasterization(
                 means,
                 quats,
                 scales * scaling,
-                opacities_new,
+                opacities_extracted,
                 colors,
                 viewmat_cmap[None],
                 K[None],
@@ -395,7 +406,7 @@ def main(
                 means,
                 quats,
                 scales * scaling,
-                opacities_new2,
+                opacities_deleted,
                 colors,
                 viewmat_cmap[None],
                 K[None],
@@ -411,29 +422,11 @@ def main(
             cx = K[0, 2]
             cy = K[1, 2]
             viewmat = viewmat.cpu().numpy()
-            for x, y, z,_ in positions_3d_positives:
-                x = x.item()
-                y = y.item()
-                z = z.item()
-                x1 = viewmat[0, 0]*x + viewmat[0, 1]*y + viewmat[0, 2]*z + viewmat[0, 3]
-                y1 = viewmat[1, 0]*x + viewmat[1, 1]*y + viewmat[1, 2]*z + viewmat[1, 3]
-                z1 = viewmat[2, 0]*x + viewmat[2, 1]*y + viewmat[2, 2]*z + viewmat[2, 3]
-                x = x1*fx + cx*z1
-                y = y1*fy + cy*z1
-                x = int(x / z1)
-                y = int(y / z1)
+            for pos in positions_3d_positives:
+                x, y = calculate_3d_to_2d(viewmat, fx, fy, cx, cy, pos)
                 cv2.circle(output_cv, (x, y), 10, (0, 255, 0), -1)
-            for x, y, z,_ in positions_3d_negatives:
-                x = x.item()
-                y = y.item()
-                z = z.item()
-                x1 = viewmat[0, 0]*x + viewmat[0, 1]*y + viewmat[0, 2]*z + viewmat[0, 3]
-                y1 = viewmat[1, 0]*x + viewmat[1, 1]*y + viewmat[1, 2]*z + viewmat[1, 3]
-                z1 = viewmat[2, 0]*x + viewmat[2, 1]*y + viewmat[2, 2]*z + viewmat[2, 3]
-                x = x1*fx + cx*z1
-                y = y1*fy + cy*z1
-                x = int(x / z1)
-                y = int(y / z1)
+            for pos in positions_3d_negatives:
+                x, y = calculate_3d_to_2d(viewmat, fx, fy, cx, cy, pos)
                 cv2.circle(output_cv, (x, y), 10, (0, 0, 255), -1)
             cv2.imshow("Click and Segment", output_cv)
             key = cv2.waitKey(10)
