@@ -13,6 +13,7 @@ def _detach_tensors_from_dict(d, inplace=True):
             d[key] = d[key].detach()
     return d
 
+
 def load_checkpoint(
     checkpoint: str,
     data_dir: str,
@@ -101,6 +102,7 @@ def get_rpy_matrix(roll, pitch, yaw):
     )
 
     return yaw_matrix @ pitch_matrix @ roll_matrix
+
 
 def get_viewmat_from_colmap_image(image):
     viewmat = torch.eye(4).float()  # .to(device)
