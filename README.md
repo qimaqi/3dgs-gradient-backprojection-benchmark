@@ -28,7 +28,7 @@ Sample data (garden) can be found [here](https://drive.google.com/file/d/1cEPby9
 To backproject the features run 
 
 ```bash
-python transfer.py --help
+python backproject.py --help
 ```
 
 **Segmentation**
