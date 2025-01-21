@@ -10,10 +10,15 @@ from typing import Literal
 import pycolmap_scene_manager as pycolmap
 import clip
 from lseg import LSegNet
-from utils import load_checkpoint, get_rpy_matrix, get_viewmat_from_colmap_image, prune_by_gradients, torch_to_cv
+from utils import (
+    load_checkpoint,
+    get_rpy_matrix,
+    get_viewmat_from_colmap_image,
+    prune_by_gradients,
+    torch_to_cv,
+)
 
 device = torch.device("cuda:0")
-
 
 
 def calculate_3d_to_2d(viewmat, fx, fy, cx, cy, position_homo):
@@ -27,8 +32,6 @@ def calculate_3d_to_2d(viewmat, fx, fy, cx, cy, position_homo):
     x = x1 * fx + cx * z1
     y = y1 * fy + cy * z1
     return int(x / z1), int(y / z1)
-
-
 
 
 class UIManager:
@@ -101,19 +104,9 @@ class UIManager:
         trigger = False
         xy = None
         if event == cv2.EVENT_LBUTTONDOWN:
-            # if ctrl_pressed:
-            #     self._remove_prompt(self.positive_prompt_locations, x, y)
-            # else:
-            #     self.positive_prompt_locations.append((x, y))
-                # xy = (x, y, 1)
             xy = x, y
             trigger = True
         elif event == cv2.EVENT_MBUTTONDOWN:
-            # if ctrl_pressed:
-            #     # self._remove_prompt(self.negative_prompt_locations, x, y)
-
-            # else:
-                # self.negative_prompt_locations.append((x, y))
             xy = x, y
             trigger = True
         if trigger:
@@ -188,8 +181,6 @@ def main(
     width = int(K[0, 2] * 2)
     height = int(K[1, 2] * 2)
 
-
-
     cv2.namedWindow("Click and Segment", cv2.WINDOW_NORMAL)
     ui_manager = UIManager("Click and Segment")
 
@@ -216,13 +207,11 @@ def main(
 
     mask_3d = None
 
-
     positions_3d_positives = []
     positions_3d_negatives = []
 
     positive_prompts = torch.zeros(0, 512).to(device)
     negative_prompts = other_prompt.to(device)
-
 
     def trigger_callback(xy, event, ctrl_pressed):
         if xy[0] >= width or xy[1] >= height:
@@ -231,8 +220,6 @@ def main(
 
         nonlocal positive_prompts
         nonlocal negative_prompts
-
-
 
         roll = params["Roll"]
         pitch = params["Pitch"]
@@ -264,7 +251,7 @@ def main(
             render_mode="RGB+D",
         )
 
-        output, depth = output[0,...,:512],output[0,...,512]
+        output, depth = output[0, ..., :512], output[0, ..., 512]
 
         fx = K[0, 0]
         fy = K[1, 1]
@@ -273,8 +260,12 @@ def main(
         if not ctrl_pressed:
             if xy is not None:
                 Z = depth[xy[1], xy[0]]
-                XY = torch.tensor([(xy[0]-cx)/fx*Z, (xy[1]-cy)/fy*Z,Z,1.0]).float().to(device)
-                XY = XY.reshape(4,1)
+                XY = (
+                    torch.tensor([(xy[0] - cx) / fx * Z, (xy[1] - cy) / fy * Z, Z, 1.0])
+                    .float()
+                    .to(device)
+                )
+                XY = XY.reshape(4, 1)
                 XY_world = torch.inverse(viewmat) @ XY
                 if event == cv2.EVENT_LBUTTONDOWN:
                     positions_3d_positives.append(XY_world.cpu().numpy())
@@ -285,32 +276,13 @@ def main(
         positive_2d_position = []
         negative_2d_position = []
 
-        for x, y, z,_ in positions_3d_positives:
-            x = x.item()
-            y = y.item()
-            z = z.item()
-            x1 = viewmat[0, 0]*x + viewmat[0, 1]*y + viewmat[0, 2]*z + viewmat[0, 3]
-            y1 = viewmat[1, 0]*x + viewmat[1, 1]*y + viewmat[1, 2]*z + viewmat[1, 3]
-            z1 = viewmat[2, 0]*x + viewmat[2, 1]*y + viewmat[2, 2]*z + viewmat[2, 3]
-            x = x1*fx + cx*z1
-            y = y1*fy + cy*z1
-            x = int(x / z1)
-            y = int(y / z1)
+        for pos in positions_3d_positives:
+            x, y = calculate_3d_to_2d(viewmat, fx, fy, cx, cy, pos)
             positive_2d_position.append((x, y))
 
-        for x, y, z,_ in positions_3d_negatives:
-            x = x.item()
-            y = y.item()
-            z = z.item()
-            x1 = viewmat[0, 0]*x + viewmat[0, 1]*y + viewmat[0, 2]*z + viewmat[0, 3]
-            y1 = viewmat[1, 0]*x + viewmat[1, 1]*y + viewmat[1, 2]*z + viewmat[1, 3]
-            z1 = viewmat[2, 0]*x + viewmat[2, 1]*y + viewmat[2, 2]*z + viewmat[2, 3]
-            x = x1*fx + cx*z1
-            y = y1*fy + cy*z1
-            x = int(x / z1)
-            y = int(y / z1)
+        for pos in positions_3d_negatives:
+            x, y = calculate_3d_to_2d(viewmat, fx, fy, cx, cy, pos)
             negative_2d_position.append((x, y))
-
 
         if not ctrl_pressed and event == cv2.EVENT_LBUTTONDOWN:
             positive_prompts = torch.cat([positive_prompts, output[xy[1], xy[0]][None]])
@@ -323,7 +295,9 @@ def main(
                     del_idx = i
                     break
             if del_idx is not None:
-                positive_prompts = torch.cat([positive_prompts[:del_idx], positive_prompts[del_idx+1:]])
+                positive_prompts = torch.cat(
+                    [positive_prompts[:del_idx], positive_prompts[del_idx + 1 :]]
+                )
                 del positions_3d_positives[del_idx]
         if ctrl_pressed and event == cv2.EVENT_MBUTTONDOWN:
             del_idx = None
@@ -332,7 +306,9 @@ def main(
                     del_idx = i
                     break
             if del_idx is not None:
-                negative_prompts = torch.cat([negative_prompts[:del_idx+1], negative_prompts[del_idx+2:]])
+                negative_prompts = torch.cat(
+                    [negative_prompts[: del_idx + 1], negative_prompts[del_idx + 2 :]]
+                )
                 del positions_3d_negatives[del_idx]
         nonlocal mask_3d
         if not positions_3d_positives:
@@ -434,9 +410,6 @@ def main(
                 break
         if key == ord("q"):
             break
-
-
-
 
 
 if __name__ == "__main__":
