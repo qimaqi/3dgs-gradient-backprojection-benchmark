@@ -345,6 +345,21 @@ def render_to_gif(
     if feedback:
         cv2.destroyAllWindows()
 
+def save_to_ckpt(
+    output_path: str,
+    splats,
+):
+    # Save Torch Checkpoint
+    checkpoint_data = {"splats": {
+        "means": splats["means"],
+        "quats": splats["rotation"],
+        "scales": splats["scaling"],
+        "opacities": splats["opacity"],
+        "sh0": splats["features_dc"],
+        "shN": splats["features_rest"],
+    }}
+    torch.save(checkpoint_data, output_path)
+
 
 def main(
     data_dir: str = "./data/garden",  # colmap path
@@ -357,6 +372,7 @@ def main(
     neg_prompt: str = "Vase;Other",
     data_factor: int = 4,
     show_visual_feedback: bool = True,
+    export_checkpoint: bool = False,
 ):
 
     if not torch.cuda.is_available():
@@ -381,7 +397,21 @@ def main(
         show_visual_feedback,
         use_checkerboard_background=True,
     )
-    render_to_gif(f"{results_dir}/deleted.gif", deleted, show_visual_feedback)
+    render_to_gif(
+        f"{results_dir}/deleted.gif",
+        deleted,
+        show_visual_feedback
+    )
+
+    if export_checkpoint:
+        save_to_ckpt(
+            f"{results_dir}/extracted.pt",
+            extracted
+        )
+        save_to_ckpt(
+            f"{results_dir}/deleted.pt",
+            deleted
+        )
 
 
 if __name__ == "__main__":
