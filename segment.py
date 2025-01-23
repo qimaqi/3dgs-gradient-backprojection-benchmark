@@ -1,3 +1,4 @@
+from copy import deepcopy
 from typing import Literal
 import tyro
 import os
@@ -269,9 +270,9 @@ def get_mask3d_lseg(splats, features, prompt, neg_prompt, threshold=None):
 def apply_mask3d(splats, mask3d, mask3d_inverted):
     if mask3d_inverted == None:
         mask3d_inverted = ~mask3d
-    extracted = splats.copy()
-    deleted = splats.copy()
-    masked = splats.copy()
+    extracted = deepcopy(splats)
+    deleted = deepcopy(splats)
+    masked = deepcopy(splats)
     extracted["means"] = extracted["means"][mask3d]
     extracted["features_dc"] = extracted["features_dc"][mask3d]
     extracted["features_rest"] = extracted["features_rest"][mask3d]
@@ -345,6 +346,98 @@ def render_to_gif(
     if feedback:
         cv2.destroyAllWindows()
 
+def render_mask_2d_to_gif(
+    splats,
+    features,
+    prompt,
+    neg_prompt,
+    output_path: str,
+    feedback: bool = False,
+):
+    if feedback:
+        cv2.destroyAllWindows()
+        cv2.namedWindow("Rendering", cv2.WINDOW_NORMAL)
+    frames = []
+    means = splats["means"]
+    colors_dc = splats["features_dc"]
+    colors_rest = splats["features_rest"]
+    colors = torch.cat([colors_dc, colors_rest], dim=1)
+    opacities = torch.sigmoid(splats["opacity"])
+    scales = torch.exp(splats["scaling"])
+    quats = splats["rotation"]
+    K = splats["camera_matrix"]
+    aux_dir = output_path + ".images"
+    os.makedirs(aux_dir, exist_ok=True)
+
+    net = LSegNet(
+        backbone="clip_vitl16_384",
+        features=256,
+        crop_size=480,
+        arch_option=0,
+        block_depth=0,
+        activation="lrelu",
+    )
+    # Load pre-trained weights
+    net.load_state_dict(torch.load("./checkpoints/lseg_minimal_e200.ckpt"))
+    net.eval()
+    net.cuda()
+
+    # Preprocess the text prompt
+    clip_text_encoder = net.clip_pretrained.encode_text
+
+    prompts = [prompt] + neg_prompt.split(";")
+
+    prompt = clip.tokenize(prompts)
+    prompt = prompt.cuda()
+
+    text_feat = clip_text_encoder(prompt)  # N, 512, N - number of prompts
+    text_feat_norm = torch.nn.functional.normalize(text_feat, dim=1)
+
+    # features = torch.nn.functional.normalize(features, dim=1)
+
+    for image in sorted(splats["colmap_project"].images.values(), key=lambda x: x.name):
+        viewmat = get_viewmat_from_colmap_image(image)
+        output, alphas, meta = rasterization(
+            means,
+            quats,
+            scales,
+            opacities,
+            colors,
+            viewmats=viewmat[None],
+            Ks=K[None],
+            width=K[0, 2] * 2,
+            height=K[1, 2] * 2,
+            sh_degree=3,
+        )
+        feats_rendered, _, _ = rasterization(
+            means,
+            quats,
+            scales,
+            opacities,
+            features,
+            viewmats=viewmat[None],
+            Ks=K[None],
+            width=K[0, 2] * 2,
+            height=K[1, 2] * 2,
+            # sh_degree=3,
+        )
+        feats_rendered = feats_rendered[0]
+        feats_rendered = torch.nn.functional.normalize(feats_rendered, dim=-1)
+        score = feats_rendered @ text_feat_norm.float().T
+        mask2d = score[..., 0] > score[..., 1:].max(dim=2)[0]
+        # print(mask2d.shape)
+        mask2d = mask2d[...,None].detach().cpu().numpy()
+        frame = np.clip(output[0].detach().cpu().numpy() * 255, 0, 255).astype(np.uint8)
+        frame = frame * (0.75 + 0.25*mask2d*np.array([255, 0, 0]) + (1-mask2d)*0.25)
+        frame = np.clip(frame, 0, 255).astype(np.uint8)
+        frames.append(frame)
+        if feedback:
+            cv2.imshow("Rendering", frame[..., ::-1])
+            cv2.imwrite(f"{aux_dir}/{image.name}", frame[..., ::-1])
+            cv2.waitKey(1)
+    imageio.mimsave(output_path, frames, fps=10, loop=0)
+    if feedback:
+        cv2.destroyAllWindows()
 def save_to_ckpt(
     output_path: str,
     splats,
@@ -390,6 +483,15 @@ def main(
     features = torch.load(f"{results_dir}/features_lseg.pt")
     mask3d, mask3d_inv = get_mask3d_lseg(splats, features, prompt, neg_prompt)
     extracted, deleted, masked = apply_mask3d(splats, mask3d, mask3d_inv)
+
+    render_mask_2d_to_gif(
+        splats,
+        features,
+        prompt,
+        neg_prompt,
+        f"{results_dir}/mask2d.gif",
+        show_visual_feedback
+    )
 
     render_to_gif(
         f"{results_dir}/extracted.gif",
