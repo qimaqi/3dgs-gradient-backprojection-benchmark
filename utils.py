@@ -176,3 +176,73 @@ def torch_to_cv(tensor, permute=False):
     else:
         tensor = torch.clamp(tensor, 0, 1).cpu().numpy()
     return (tensor * 255).astype(np.uint8)[..., ::-1]
+
+def test_proper_pruning(splats, splats_after_pruning):
+    colmap_project = splats["colmap_project"]
+    frame_idx = 0
+    means = splats["means"]
+    colors_dc = splats["features_dc"]
+    colors_rest = splats["features_rest"]
+    colors = torch.cat([colors_dc, colors_rest], dim=1)
+    opacities = torch.sigmoid(splats["opacity"])
+    scales = torch.exp(splats["scaling"])
+    quats = splats["rotation"]
+
+    means_pruned = splats_after_pruning["means"]
+    colors_dc_pruned = splats_after_pruning["features_dc"]
+    colors_rest_pruned = splats_after_pruning["features_rest"]
+    colors_pruned = torch.cat([colors_dc_pruned, colors_rest_pruned], dim=1)
+    opacities_pruned = torch.sigmoid(splats_after_pruning["opacity"])
+    scales_pruned = torch.exp(splats_after_pruning["scaling"])
+    quats_pruned = splats_after_pruning["rotation"]
+
+    K = splats["camera_matrix"]
+    total_error = 0
+    max_pixel_error = 0
+    for image in sorted(colmap_project.images.values(), key=lambda x: x.name):
+        viewmat = get_viewmat_from_colmap_image(image)
+        output, _, _ = rasterization(
+            means,
+            quats,
+            scales,
+            opacities,
+            colors,
+            viewmats=viewmat[None],
+            Ks=K[None],
+            sh_degree=3,
+            width=K[0, 2] * 2,
+            height=K[1, 2] * 2,
+        )
+
+        output_pruned, _, _ = rasterization(
+            means_pruned,
+            quats_pruned,
+            scales_pruned,
+            opacities_pruned,
+            colors_pruned,
+            viewmats=viewmat[None],
+            Ks=K[None],
+            sh_degree=3,
+            width=K[0, 2] * 2,
+            height=K[1, 2] * 2,
+        )
+
+        total_error += torch.abs((output - output_pruned)).sum()
+        max_pixel_error = max(
+            max_pixel_error, torch.abs((output - output_pruned)).max()
+        )
+
+    percentage_pruned = (
+        (len(splats["means"]) - len(splats_after_pruning["means"]))
+        / len(splats["means"])
+        * 100
+    )
+
+    assert max_pixel_error < 1 / (
+        255 * 2
+    ), "Max pixel error should be less than 1/(255*2), safety margin"
+    print(
+        "Report {}% pruned, max pixel error = {}, total pixel error = {}".format(
+            percentage_pruned, max_pixel_error, total_error
+        )
+    )
