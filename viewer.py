@@ -45,7 +45,7 @@ def _detach_tensors_from_dict(d, inplace=True):
 
 #     return splats, metadata
 
-def load_checkpoint(checkpoint: str, data_dir: str, rasterizer: Literal["inria", "gsplat"]="original", data_factor: int = 1):
+def load_checkpoint(checkpoint: str, data_dir: str, rasterizer: Literal["inria", "gsplat"]="inria", data_factor: int = 1):
 
     colmap_project = pycolmap.SceneManager(f"{data_dir}/sparse/0")
     colmap_project.load_cameras()
