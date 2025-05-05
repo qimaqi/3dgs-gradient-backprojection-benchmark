@@ -1,9 +1,14 @@
 import torch
-import pycolmap_scene_manager as pycolmap
+# import pycolmap_scene_manager as pycolmap
 from typing import Literal
 import numpy as np
 from gsplat import rasterization
 
+from plyfile import PlyData, PlyElement
+import os 
+import json
+from pathlib import Path
+from PIL import Image
 
 def _detach_tensors_from_dict(d, inplace=True):
     if not inplace:
@@ -12,6 +17,76 @@ def _detach_tensors_from_dict(d, inplace=True):
         if isinstance(d[key], torch.Tensor):
             d[key] = d[key].detach()
     return d
+
+
+def load_ply(
+    ply_path: str,
+    data_dir: str,
+    rasterizer: Literal["inria", "gsplat"] = "gsplat",
+    resize=None,
+    max_sh_degree: int = 3,
+):
+    plydata = PlyData.read(ply_path)
+
+    xyz = np.stack((np.asarray(plydata.elements[0]["x"]),
+                    np.asarray(plydata.elements[0]["y"]),
+                    np.asarray(plydata.elements[0]["z"])),  axis=1)
+    opacities = np.asarray(plydata.elements[0]["opacity"])[..., np.newaxis]
+
+    features_dc = np.zeros((xyz.shape[0], 3, 1))
+    features_dc[:, 0, 0] = np.asarray(plydata.elements[0]["f_dc_0"])
+    features_dc[:, 1, 0] = np.asarray(plydata.elements[0]["f_dc_1"])
+    features_dc[:, 2, 0] = np.asarray(plydata.elements[0]["f_dc_2"])
+
+    extra_f_names = [p.name for p in plydata.elements[0].properties if p.name.startswith("f_rest_")]
+    extra_f_names = sorted(extra_f_names, key = lambda x: int(x.split('_')[-1]))
+    assert len(extra_f_names)==3*(max_sh_degree + 1) ** 2 - 3
+    features_extra = np.zeros((xyz.shape[0], len(extra_f_names)))
+    for idx, attr_name in enumerate(extra_f_names):
+        features_extra[:, idx] = np.asarray(plydata.elements[0][attr_name])
+    # Reshape (P,F*SH_coeffs) to (P, F, SH_coeffs except DC)
+    features_extra = features_extra.reshape((features_extra.shape[0], 3, (max_sh_degree + 1) ** 2 - 1))
+
+    scale_names = [p.name for p in plydata.elements[0].properties if p.name.startswith("scale_")]
+    scale_names = sorted(scale_names, key = lambda x: int(x.split('_')[-1]))
+    scales = np.zeros((xyz.shape[0], len(scale_names)))
+    for idx, attr_name in enumerate(scale_names):
+        scales[:, idx] = np.asarray(plydata.elements[0][attr_name])
+
+    rot_names = [p.name for p in plydata.elements[0].properties if p.name.startswith("rot")]
+    rot_names = sorted(rot_names, key = lambda x: int(x.split('_')[-1]))
+    rots = np.zeros((xyz.shape[0], len(rot_names)))
+    for idx, attr_name in enumerate(rot_names):
+        rots[:, idx] = np.asarray(plydata.elements[0][attr_name])
+
+    splats = {
+        "active_sh_degree": max_sh_degree,
+        "means": torch.tensor(xyz).float().cuda(),
+        "features_dc": torch.tensor(features_dc).float().cuda().transpose(1, 2).contiguous(),
+        "features_rest": torch.tensor(features_extra).float().cuda().transpose(1, 2).contiguous(),
+        "scaling": torch.tensor(scales).float().cuda(),
+        "rotation": torch.tensor(rots).float().cuda(),
+        "opacity": torch.tensor(opacities).float().cuda().squeeze(1),
+    }
+
+    # for key, value in splats.items():
+    #     if key != "active_sh_degree":
+    #         print("{}: {}".format(key, value.shape))
+    #         print("min: {}, max: {}".format(value.min(), value.max()))
+    _detach_tensors_from_dict(splats)
+
+    transform_json_file = os.path.join(data_dir, 'dslr', 'nerfstudio', 'lang_feat_selected_imgs.json')
+    splats["transform_json_file"] = transform_json_file
+    # splats["colmap_project"] = colmap_project
+    # splats["colmap_dir"] = data_dir
+
+    return splats
+
+    # raise NotImplementedError("This is not used in the code, so not implemented")
+
+
+
+
 
 
 def load_checkpoint(
@@ -49,6 +124,24 @@ def load_checkpoint(
             "rotation": model_params["quats"],
             "opacity": model_params["opacities"],
         }
+        # means: torch.Size([1000000, 3])
+        # min: -12298.1533203125, max: 10229.1904296875
+        # features_dc: torch.Size([1000000, 1, 3])
+        # min: -2.661349058151245, max: 9.007434844970703
+        # features_rest: torch.Size([1000000, 15, 3])
+        # min: -1.0038543939590454, max: 1.0420862436294556
+        # scaling: torch.Size([1000000, 3])
+        # min: -20.09921646118164, max: 2.8412225246429443
+        # rotation: torch.Size([1000000, 4])
+        # min: -1.7583035230636597, max: 3.7463581562042236
+        # opacity: torch.Size([1000000])
+        # min: -12.972627639770508, max: 16.700193405151367
+        # Total splats 1000000
+
+        for key, value in splats.items():
+            if key != "active_sh_degree":
+                print("{}: {}".format(key, value.shape))
+                print("min: {}, max: {}".format(value.min(), value.max()))
     else:
         raise ValueError("Invalid rasterizer")
 
@@ -111,6 +204,131 @@ def get_viewmat_from_colmap_image(image):
     return viewmat
 
 
+def prune_by_gradients_json(splats, inverse_extrinsics=True):
+
+    frame_idx = 0
+    means = splats["means"]
+    colors_dc = splats["features_dc"]
+    colors_rest = splats["features_rest"]
+    colors = torch.cat([colors_dc, colors_rest], dim=1)
+    opacities = torch.sigmoid(splats["opacity"])
+    scales = torch.exp(splats["scaling"])
+    quats = splats["rotation"]
+    # K = splats["camera_matrix"]
+    colors.requires_grad = True
+    gaussian_grads = torch.zeros(colors.shape[0], device=colors.device)
+
+    transformsfile = splats["transform_json_file"]
+    with open(transformsfile) as json_file:
+        contents = json.load(json_file)
+        focal_len_x = contents["fl_x"] if "fl_x" in contents else contents["fx"]
+        focal_len_y = contents["fl_y"] if "fl_y" in contents else contents["fy"]
+
+        cx = contents["cx"] 
+        cy = contents["cy"]
+        if "crop_edge" in contents:
+            cx -= contents["crop_edge"]
+            cy -= contents["crop_edge"]
+        if "w" in contents and "h" in contents:
+            # scannetpp case, fx, fy, cx, cy in scannetpp json are for 1752*1168, not our target size
+            width, height = contents["w"], contents["h"]
+        elif "resize" in contents:
+            # scannet case, fx, fy, cx, cy in scannet json are already for image size 640x480
+            width, height = contents["resize"]
+            if "crop_edge" in contents:
+                width -= 2*contents["crop_edge"]
+                height -= 2*contents["crop_edge"]
+        else:
+            # if not specify, we assume the weight and height are twice the cx and cy
+            width, height = cx * 2, cy * 2 
+        frames = contents["frames"]
+        for idx, frame in enumerate(frames):
+            # NeRF 'transform_matrix' is a camera-to-world transform
+            c2w = np.array(frame["transform_matrix"])
+            # change from OpenGL/Blender camera axes (Y up, Z back) to COLMAP (Y down, Z forward)
+            applied_transform = np.array([
+                [0,  1,  0,  0],
+                [1,  0,  0,  0],
+                [0,  0, -1,  0],
+                [0,  0,  0,  1],
+            ], dtype=float)
+            c2w = np.dot(applied_transform, c2w)
+            # get the world-to-camera transform and set R, T
+            # w2c = c2w
+            if inverse_extrinsics: # some dataset save world-to-camera, some camera-to-world, careful!
+                w2c = np.linalg.inv(c2w)
+            else:
+                w2c = c2w
+
+            w2c[1:3] *= -1
+            R = w2c[:3,:3] #np.transpose(w2c[:3,:3])  # R is stored transposed due to 'glm' in CUDA code
+            T = w2c[:3, 3]
+            # image_path = os.path.join(image_path, f'{cam_name + extension}')
+            # image_name = Path(cam_name).stem
+            viewmat = torch.eye(4).float()  # .to(device)
+            viewmat[:3, :3] = torch.tensor(R).float()  # .to(device)
+            viewmat[:3, 3] = torch.tensor(T).float()  # .to(device)
+            resize_ratio = 0.5
+            fx_resize = focal_len_x * resize_ratio
+            
+            fy_resize = focal_len_y * resize_ratio
+            cx_resize = cx * resize_ratio
+            cy_resize = cy * resize_ratio
+            
+            K = torch.tensor(
+                [
+                    [fx_resize, 0, cx_resize],
+                    [0, fy_resize, cy_resize],
+                    [0, 0, 1],
+                ]
+            ).float()
+
+            output, _, _ = rasterization(
+                means,
+                quats,
+                scales,
+                opacities,
+                colors[:, 0, :],
+                viewmats=viewmat[None],
+                Ks=K[None],
+                # sh_degree=3,
+                width=K[0, 2] * 2,
+                height=K[1, 2] * 2,
+            )
+            frame_idx += 1
+            pseudo_loss = ((output.detach() + 1 - output) ** 2).mean()
+            pseudo_loss.backward()
+            # print(colors.grad.shape)
+            gaussian_grads += (colors.grad[:, 0]).norm(dim=[1])
+            colors.grad.zero_()
+
+            # debug
+            # output_debug = output.detach().cpu()[0].numpy() # H,W,3
+            # C0 = 0.28209479177387814
+            # output_debug = (output_debug*C0).astype(np.float32) + 0.5
+            # output_debug = np.clip(output_debug, 0, 1)
+            # output_debug = (output_debug * 255).astype(np.uint8)
+            # output_debug_img = Image.fromarray(output_debug)
+            # output_debug_img.save(f"/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/debug/debug_output_{frame_idx}.png")
+
+
+            # print("output shape", output.shape, "min", output.min(), "max", output.max())
+        mask = gaussian_grads > 0
+        print("Total splats", len(gaussian_grads))
+        print("Pruned", (~mask).sum(), "splats")
+        print("Remaining", mask.sum(), "splats")
+        splats = splats.copy()
+        splats["means"] = splats["means"][mask]
+        splats["features_dc"] = splats["features_dc"][mask]
+        splats["features_rest"] = splats["features_rest"][mask]
+        splats["scaling"] = splats["scaling"][mask]
+        splats["rotation"] = splats["rotation"][mask]
+        splats["opacity"] = splats["opacity"][mask]
+    
+    return splats
+
+
+
 def prune_by_gradients(splats):
     colmap_project = splats["colmap_project"]
     frame_idx = 0
@@ -134,7 +352,7 @@ def prune_by_gradients(splats):
             colors[:, 0, :],
             viewmats=viewmat[None],
             Ks=K[None],
-            # sh_degree=3,
+            sh_degree=3,
             width=K[0, 2] * 2,
             height=K[1, 2] * 2,
         )
@@ -246,3 +464,142 @@ def test_proper_pruning(splats, splats_after_pruning):
             percentage_pruned, max_pixel_error, total_error
         )
     )
+
+
+def test_proper_pruning_json(splats, splats_after_pruning, inverse_extrinsics=True):
+    # colmap_project = splats["colmap_project"]
+    frame_idx = 0
+    means = splats["means"]
+    colors_dc = splats["features_dc"]
+    colors_rest = splats["features_rest"]
+    colors = torch.cat([colors_dc, colors_rest], dim=1)
+    opacities = torch.sigmoid(splats["opacity"])
+    scales = torch.exp(splats["scaling"])
+    quats = splats["rotation"]
+
+    means_pruned = splats_after_pruning["means"]
+    colors_dc_pruned = splats_after_pruning["features_dc"]
+    colors_rest_pruned = splats_after_pruning["features_rest"]
+    colors_pruned = torch.cat([colors_dc_pruned, colors_rest_pruned], dim=1)
+    opacities_pruned = torch.sigmoid(splats_after_pruning["opacity"])
+    scales_pruned = torch.exp(splats_after_pruning["scaling"])
+    quats_pruned = splats_after_pruning["rotation"]
+
+    # K = splats["camera_matrix"]
+    total_error = 0
+    max_pixel_error = 0
+    transformsfile = splats["transform_json_file"]
+
+    with open(transformsfile) as json_file:
+        contents = json.load(json_file)
+        focal_len_x = contents["fl_x"] if "fl_x" in contents else contents["fx"]
+        focal_len_y = contents["fl_y"] if "fl_y" in contents else contents["fy"]
+
+        cx = contents["cx"] 
+        cy = contents["cy"]
+        if "crop_edge" in contents:
+            cx -= contents["crop_edge"]
+            cy -= contents["crop_edge"]
+        if "w" in contents and "h" in contents:
+            # scannetpp case, fx, fy, cx, cy in scannetpp json are for 1752*1168, not our target size
+            width, height = contents["w"], contents["h"]
+        elif "resize" in contents:
+            # scannet case, fx, fy, cx, cy in scannet json are already for image size 640x480
+            width, height = contents["resize"]
+            if "crop_edge" in contents:
+                width -= 2*contents["crop_edge"]
+                height -= 2*contents["crop_edge"]
+        else:
+            # if not specify, we assume the weight and height are twice the cx and cy
+            width, height = cx * 2, cy * 2 
+        frames = contents["frames"]
+        for idx, frame in enumerate(frames):
+            # NeRF 'transform_matrix' is a camera-to-world transform
+            c2w = np.array(frame["transform_matrix"])
+            # change from OpenGL/Blender camera axes (Y up, Z back) to COLMAP (Y down, Z forward)
+            applied_transform = np.array([
+                [0,  1,  0,  0],
+                [1,  0,  0,  0],
+                [0,  0, -1,  0],
+                [0,  0,  0,  1],
+            ], dtype=float)
+            c2w = np.dot(applied_transform, c2w)
+            # get the world-to-camera transform and set R, T
+            # w2c = c2w
+            if inverse_extrinsics: # some dataset save world-to-camera, some camera-to-world, careful!
+                w2c = np.linalg.inv(c2w)
+            else:
+                w2c = c2w
+
+            w2c[1:3] *= -1
+            R = w2c[:3,:3] #np.transpose(w2c[:3,:3])  # R is stored transposed due to 'glm' in CUDA code
+            T = w2c[:3, 3]
+            # image_path = os.path.join(image_path, f'{cam_name + extension}')
+            # image_name = Path(cam_name).stem
+            viewmat = torch.eye(4).float()  # .to(device)
+            viewmat[:3, :3] = torch.tensor(R).float()  # .to(device)
+            viewmat[:3, 3] = torch.tensor(T).float()  # .to(device)
+            resize_ratio = 0.5
+            fx_resize = focal_len_x * resize_ratio
+            
+            fy_resize = focal_len_y * resize_ratio
+            cx_resize = cx * resize_ratio
+            cy_resize = cy * resize_ratio
+            
+            K = torch.tensor(
+                [
+                    [fx_resize, 0, cx_resize],
+                    [0, fy_resize, cy_resize],
+                    [0, 0, 1],
+                ]
+            ).float()
+
+            output, _, _ = rasterization(
+                means,
+                quats,
+                scales,
+                opacities,
+                colors,
+                viewmats=viewmat[None],
+                Ks=K[None],
+                sh_degree=3,
+                width=K[0, 2] * 2,
+                height=K[1, 2] * 2,
+            )
+
+            output_pruned, _, _ = rasterization(
+                means_pruned,
+                quats_pruned,
+                scales_pruned,
+                opacities_pruned,
+                colors_pruned,
+                viewmats=viewmat[None],
+                Ks=K[None],
+                sh_degree=3,
+                width=K[0, 2] * 2,
+                height=K[1, 2] * 2,
+            )
+
+            frame_idx += 1
+
+            total_error += torch.abs((output - output_pruned)).sum()
+            max_pixel_error = max(
+                max_pixel_error, torch.abs((output - output_pruned)).max()
+            )
+
+        percentage_pruned = (
+            (len(splats["means"]) - len(splats_after_pruning["means"]))
+            / len(splats["means"])
+            * 100
+        )
+
+        assert max_pixel_error < 1 / (
+            255 * 2
+        ), "Max pixel error should be less than 1/(255*2), safety margin"
+        print(
+            "Report {}% pruned, max pixel error = {}, total pixel error = {}".format(
+                percentage_pruned, max_pixel_error, total_error
+            )
+        )
+
+

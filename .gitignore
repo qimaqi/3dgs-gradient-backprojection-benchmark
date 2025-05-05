@@ -4,3 +4,13 @@ checkpoints
 .ckpt
 .pt
 .pth
+debug/
+checkpoints/
+results/
+__pycache__/
+*/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.log
