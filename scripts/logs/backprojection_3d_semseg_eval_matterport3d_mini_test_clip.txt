@@ -1,0 +1,11 @@
+Command line arguments:
+val_split_path: /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/splits/matterport3d_mini_test.txt
+preprocessed_root: /srv/beegfs02/scratch/qimaqi_data/data/matterport_pointcloud_preprocessed/
+results_root: /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/matterport
+gs_root: /srv/beegfs02/scratch/qimaqi_data/data/matterport_all_val/mcmc_3dgs/
+nn_num: 25
+label_path: /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/iccv_2025/GS_Transformer/data/scannet_full/metadata/semantic_benchmark/top100.txt
+use_dot_similarity: True
+print_class_iou: True
+ignore_classes: ['other furniture', 'wall', 'floor', 'ceiling']
+

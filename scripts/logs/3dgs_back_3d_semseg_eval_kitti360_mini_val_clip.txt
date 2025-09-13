@@ -1,0 +1,115 @@
+Command line arguments:
+val_split_path: /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/splits/kitti360_mini_val.txt
+preprocessed_root: /srv/beegfs-benderdata/scratch/qimaqi_data/data/neurips_2025/kitti_360_chunk_preprocessed_gs/test
+gs_root: /srv/beegfs-benderdata/scratch/qimaqi_data/data/neurips_2025/kitti_360_subset_chunk/
+nn_num: 25
+print_class_iou: True
+ignore_classes: ['sky', 'unknown construction', 'unknown vehicle', 'unknown object']
+save_results: False
+downsample_ratio: -1
+label_path: /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/language_feature_experiments/metadata/kitti_label_37.txt
+
+Using CLIP language features from /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync
+Found 16 validation scenes.
+use nn_num: 25
+prompt_list ['this is a road', 'this is a parking', 'this is a sidewalk', 'this is a terrain', 'this is a vegetation', 'this is a gate', 'this is a wall', 'this is a fence', 'this is a sky', 'this is a rail track', 'this is a building', 'this is a garage', 'this is a car', 'this is a truck', 'this is a trailer', 'this is a caravan', 'this is a motorcycle', 'this is a bicycle', 'this is a person', 'this is a rider', 'this is a pole', 'this is a smallpole', 'this is a traffic light', 'this is a traffic sign', 'this is a lamp', 'this is a trash bin', 'this is a vending machine', 'this is a box', 'this is a stop', 'this is a guard rail', 'this is a bridge', 'this is a tunnel', 'this is a train', 'this is a bus', 'this is a unknown construction', 'this is a unknown vehicle', 'this is a unknown object']
+text_feat_lseg shape:  (37, 512)
+
+Processing scene 0000_0000000599_0000000660...
+segment -1 27
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000000599_0000000660/kitti360_backproject_lseg_0000_0000000599_0000000660_semseg_pred.ply
+
+Processing scene 0000_0000000661_0000000722...
+segment -1 36
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000000661_0000000722/kitti360_backproject_lseg_0000_0000000661_0000000722_semseg_pred.ply
+
+Processing scene 0000_0000000723_0000000784...
+segment -1 36
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000000723_0000000784/kitti360_backproject_lseg_0000_0000000723_0000000784_semseg_pred.ply
+
+Processing scene 0000_0000000785_0000000846...
+segment -1 27
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000000785_0000000846/kitti360_backproject_lseg_0000_0000000785_0000000846_semseg_pred.ply
+
+Processing scene 0000_0000001270_0000001339...
+segment -1 27
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000001270_0000001339/kitti360_backproject_lseg_0000_0000001270_0000001339_semseg_pred.ply
+
+Processing scene 0000_0000001340_0000001409...
+segment -1 27
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000001340_0000001409/kitti360_backproject_lseg_0000_0000001340_0000001409_semseg_pred.ply
+
+Processing scene 0000_0000001410_0000001479...
+segment -1 27
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000001410_0000001479/kitti360_backproject_lseg_0000_0000001410_0000001479_semseg_pred.ply
+
+Processing scene 0000_0000001480_0000001549...
+segment -1 27
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000001480_0000001549/kitti360_backproject_lseg_0000_0000001480_0000001549_semseg_pred.ply
+
+Processing scene 0000_0000001740_0000001802...
+segment -1 27
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000001740_0000001802/kitti360_backproject_lseg_0000_0000001740_0000001802_semseg_pred.ply
+
+Processing scene 0000_0000001803_0000001865...
+segment -1 24
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000001803_0000001865/kitti360_backproject_lseg_0000_0000001803_0000001865_semseg_pred.ply
+
+Processing scene 0000_0000001866_0000001928...
+segment -1 25
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000001866_0000001928/kitti360_backproject_lseg_0000_0000001866_0000001928_semseg_pred.ply
+
+Processing scene 0000_0000001929_0000001991...
+segment 0 25
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000001929_0000001991/kitti360_backproject_lseg_0000_0000001929_0000001991_semseg_pred.ply
+
+Processing scene 0000_0000001980_0000002058...
+segment -1 27
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000001980_0000002058/kitti360_backproject_lseg_0000_0000001980_0000002058_semseg_pred.ply
+
+Processing scene 0000_0000002059_0000002137...
+segment -1 25
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000002059_0000002137/kitti360_backproject_lseg_0000_0000002059_0000002137_semseg_pred.ply
+
+Processing scene 0000_0000002138_0000002216...
+segment -1 26
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000002138_0000002216/kitti360_backproject_lseg_0000_0000002138_0000002216_semseg_pred.ply
+
+Processing scene 0000_0000002217_0000002295...
+segment -1 26
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/kitti360/2013_05_28_drive_0000_sync/0000_0000002217_0000002295/kitti360_backproject_lseg_0000_0000002217_0000002295_semseg_pred.ply
+
+=== Results for KITTI360 ===
+Excluded indices: [8, 34, 35, 36]
+Global Accuracy: 0.7277
+Mean Class Accuracy: 0.2751
+mIoU: 0.2042
+Foreground excluding classes: ['sky', 'unknown construction', 'unknown vehicle', 'unknown object']
+Foreground mIoU: 0.2131
+Foreground mAcc: 0.2870
+
+Per-class IoU:
+road                : 0.8376
+parking             : 0.1466
+sidewalk            : 0.3933
+terrain             : 0.4220
+vegetation          : 0.6462
+gate                : 0.0000
+wall                : 0.1208
+fence               : 0.1431
+building            : 0.4420
+garage              : 0.0000
+car                 : 0.6174
+truck               : 0.6267
+trailer             : 0.0000
+motorcycle          : 0.0000
+bicycle             : 0.2263
+person              : 0.1254
+pole                : 0.0729
+smallpole           : 0.0003
+traffic sign        : 0.0813
+lamp                : 0.0000
+trash bin           : 0.0000
+vending machine     : 0.0000
+box                 : 0.0000
+unknown object      : 0.0000

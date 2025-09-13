@@ -1,0 +1,58 @@
+Command line arguments:
+val_split_path: /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/splits/holicity_mini_val.txt
+preprocessed_root: /srv/beegfs02/scratch/qimaqi_data/data/holicity_val_set_preprocessed
+gs_root: /srv/beegfs02/scratch/qimaqi_data/data/holicity_val_set_suite/mcmc_3dgs
+nn_num: 25
+print_class_iou: True
+ignore_classes: None
+save_results: False
+downsample_ratio: -1
+
+Using CLIP language features from /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity
+Found 10 validation scenes.
+use nn_num: 25
+
+Processing scene ytwUEEljP6RgoV0MviqvsQ_LD...
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity/ytwUEEljP6RgoV0MviqvsQ_LD/holicity_backproject_lseg_ytwUEEljP6RgoV0MviqvsQ_LD_semseg_pred.ply
+
+Processing scene yuVpITQv74rpaWqX4kEW4Q_HD...
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity/yuVpITQv74rpaWqX4kEW4Q_HD/holicity_backproject_lseg_yuVpITQv74rpaWqX4kEW4Q_HD_semseg_pred.ply
+
+Processing scene yxYrxgMjOWCeJ3a_KyBXKA_LD...
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity/yxYrxgMjOWCeJ3a_KyBXKA_LD/holicity_backproject_lseg_yxYrxgMjOWCeJ3a_KyBXKA_LD_semseg_pred.ply
+
+Processing scene yy03mA02i0OxVdMb9klRgg_LD...
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity/yy03mA02i0OxVdMb9klRgg_LD/holicity_backproject_lseg_yy03mA02i0OxVdMb9klRgg_LD_semseg_pred.ply
+
+Processing scene z0IhWSN8uhWDltDqmwdY8g_HD...
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity/z0IhWSN8uhWDltDqmwdY8g_HD/holicity_backproject_lseg_z0IhWSN8uhWDltDqmwdY8g_HD_semseg_pred.ply
+
+Processing scene z37U-BzqOo0_mSeJh7gXbg_LD...
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity/z37U-BzqOo0_mSeJh7gXbg_LD/holicity_backproject_lseg_z37U-BzqOo0_mSeJh7gXbg_LD_semseg_pred.ply
+
+Processing scene z5af-sE80KZQc_9Se7Aq_g_LD...
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity/z5af-sE80KZQc_9Se7Aq_g_LD/holicity_backproject_lseg_z5af-sE80KZQc_9Se7Aq_g_LD_semseg_pred.ply
+
+Processing scene z5l-XERj7c-N4Rdk4JSLeg_LD...
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity/z5l-XERj7c-N4Rdk4JSLeg_LD/holicity_backproject_lseg_z5l-XERj7c-N4Rdk4JSLeg_LD_semseg_pred.ply
+
+Processing scene z8hAivfNyPaRSobbXCR8jQ_LD...
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity/z8hAivfNyPaRSobbXCR8jQ_LD/holicity_backproject_lseg_z8hAivfNyPaRSobbXCR8jQ_LD_semseg_pred.ply
+
+Processing scene z9UseFv2rAwNfe21MuYxZQ_LD...
+Save visualization to /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity/z9UseFv2rAwNfe21MuYxZQ_LD/holicity_backproject_lseg_z9UseFv2rAwNfe21MuYxZQ_LD_semseg_pred.ply
+
+=== Results for HOLICITY ===
+Excluded indices: []
+Global Accuracy: 0.6076
+Mean Class Accuracy: 0.4808
+mIoU: 0.2484
+Foreground excluding classes: None
+Foreground mIoU: 0.2484
+Foreground mAcc: 0.4808
+
+Per-class IoU:
+buildings           : 0.7441
+roads               : 0.1426
+terrains            : 0.1030
+trees               : 0.0036

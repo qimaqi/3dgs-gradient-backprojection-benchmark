@@ -10,4 +10,5 @@
 #SBATCH --mem 120GB
 
 source /scratch_net/schusch/qimaqi/miniconda3/etc/profile.d/conda.sh
+conda activate 3dgsback_gsplat14
 conda activate 3dgsback

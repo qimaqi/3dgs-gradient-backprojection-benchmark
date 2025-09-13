@@ -1,0 +1,26 @@
+Command line arguments:
+val_split_path: /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/splits/holicity_val.txt
+preprocessed_root: /srv/beegfs02/scratch/qimaqi_data/data/holicity_val_set_preprocessed
+gs_root: /srv/beegfs02/scratch/qimaqi_data/data/holicity_val_set_suite/mcmc_3dgs
+nn_num: 25
+print_class_iou: True
+ignore_classes: None
+save_results: False
+downsample_ratio: -1
+
+Using CLIP language features from /usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/results/holicity
+Found 1 validation scenes.
+use nn_num: 25
+
+=== Results for HOLICITY ===
+Excluded indices: []
+Global Accuracy: 0.2800
+Mean Class Accuracy: 0.3188
+mIoU: 0.2534
+Foreground excluding classes: None
+Foreground mIoU: 0.2534
+Foreground mAcc: 0.3188
+
+Per-class IoU:
+buildings           : 0.4950
+terrains            : 0.0118

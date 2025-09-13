@@ -27,6 +27,8 @@ from utils import (
     test_proper_pruning_json,
     prune_by_gradients_matterport,
     test_proper_pruning_matterport,
+    prune_by_gradients_holicity,
+    test_proper_pruning_holicity,
 )
 
 
@@ -89,13 +91,13 @@ def create_feature_field_lseg(splats, batch_size=1, use_cpu=False, inverse_extri
         height = contents["height"]
 
 
+        fx = contents["fl_x"] if "fl_x" in contents else contents["fx"]
+        fy = contents["fl_y"] if "fl_y" in contents else contents["fy"]
+        cx = contents["cx"]
+        cy = contents["cy"]
 
         for idx, frame in tqdm(enumerate(frames), desc="Feature backprojection (frames)", total=len(frames)):
-            fx = frame["fx"]
-            fy = frame["fy"]
-            cx = frame["cx"]
-            cy = frame["cy"]
-
+   
             # NeRF 'transform_matrix' is a camera-to-world transform
             c2w = np.array(frame["transform_matrix"])
             # get the world-to-camera transform and set R, T
@@ -142,7 +144,7 @@ def create_feature_field_lseg(splats, batch_size=1, use_cpu=False, inverse_extri
                     K[None],
                     width=width,
                     height=height,
-                    sh_degree=3,
+                    sh_degree=0,
                 )
 
                 output = torch.nn.functional.interpolate(
@@ -345,11 +347,11 @@ def create_feature_field_dino(splats):
 
 
 def main(
-    data_root_path: str = "/srv/beegfs02/scratch/qimaqi_data/data/matterport_all_val/original_data", # subset
+    data_root_path: str = "/srv/beegfs02/scratch/qimaqi_data/data/holicity_val_set_suite/original_data/", # subset
     # val_split: str = "/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/splits/matterport3d_mini_test.txt",
     # full set "/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/iccv_2025/GS_Transformer/data/scannet_full/",  # colmap path
-    ply_root_path: str = "/srv/beegfs02/scratch/qimaqi_data/data/matterport_all_val/mcmc_3dgs",  # checkpoint path, can generate from original 3DGS repo
-    results_root_dir: str = "./results/matterport/",  # output path
+    ply_root_path: str = "/srv/beegfs02/scratch/qimaqi_data/data/holicity_val_set_suite/mcmc_3dgs",  # checkpoint path, can generate from original 3DGS repo
+    results_root_dir: str = "./results/holicity/",  # output path
     rasterizer: Literal[
         "inria", "gsplat"
     ] = "gsplat",  # Original or GSplat for checkpoints
@@ -357,7 +359,7 @@ def main(
     feature_field_batch_count: int = 1,  # Number of batches to process for feature field
     run_feature_field_on_cpu: bool = False,  # Run feature field on CPU
     feature: Literal["lseg", "dino"] = "lseg",  # Feature field type
-    scene_i: str = "2t7WUuJeko7_02",  # Scene name
+    scene_i: str = "ytwUEEljP6RgoV0MviqvsQ_LD",  # Scene name
     rescale: int = 0,  # Rescale factor for images
 ):
 
@@ -370,50 +372,44 @@ def main(
     torch.set_default_device("cuda")
 
     os.makedirs(result_i_dir, exist_ok=True)
-    ply_path_i = os.path.join(ply_root_path, scene_i, 'ckpts', 'point_cloud_30000.ply')
+    ply_path_i = os.path.join(ply_root_path, scene_i, 'ckpts', 'point_cloud_9000.ply')
     data_dir = os.path.join(data_root_path, scene_i)
     splats = load_ply(
-        ply_path_i, data_dir, rasterizer=rasterizer, dataset="matterport"
+        ply_path_i, data_dir, rasterizer=rasterizer, dataset="holicity", max_sh_degree=0
     )
-    splats_optimized = prune_by_gradients_matterport(splats)
+    splats_optimized = prune_by_gradients_holicity(splats)
 
-    test_proper_pruning_matterport(splats, splats_optimized)
+    test_proper_pruning_holicity(splats, splats_optimized)
 
+    # raise Exception("Debugging")
     splats = splats_optimized
     if feature == "lseg":
         if rescale == 0:
-            feat_save_path = f"{result_i_dir}/features_lseg_512_640.pt"
+            feat_save_path = f"{result_i_dir}/features_lseg_512_512.pt"
             if not os.path.exists(feat_save_path):
                 features = create_feature_field_lseg(
-                    splats, feature_field_batch_count, run_feature_field_on_cpu,resize=[512, 640]
+                    splats, feature_field_batch_count, run_feature_field_on_cpu,resize=[512, 512]
                 )
                 torch.save(features, feat_save_path)
-            else:
-                print(f"Feature file already exists: {feat_save_path}")
-            xyz_save_path = f"{result_i_dir}/xyz_lseg_512_640.npy"
+
+            xyz_save_path = f"{result_i_dir}/xyz_lseg_512_512.npy"
             if not os.path.exists(xyz_save_path):
                 xyz = splats["means"].cpu().numpy()
                 np.save(xyz_save_path, xyz)
-            else:
-                print(f"XYZ file already exists: {xyz_save_path}")
-                
+    
+
         # except Exception as e:
         #     del features
         #     torch.cuda.empty_cache()
         #     print(f"Error in LSeg feature extraction: 584 876", e)
 
-        # if rescale == 1:
-        #     features = create_feature_field_lseg(
-        #         splats, feature_field_batch_count, run_feature_field_on_cpu,resize=[256, 320]
-        #     )
-        #     torch.save(features, f"{result_i_dir}/features_lseg_256_320.pt")
    
         try:
             del splats
             del features
             torch.cuda.empty_cache()
-        except:
-            print("Error in LSeg feature extraction")
+        except Exception as e:
+            print("Error in deleting variables", e)
 
 
 
@@ -424,7 +420,7 @@ def get_arguments():
     argparser.add_argument(
         "--scene_name",
         type=str,
-        default="09c1414f1b",
+        default="ytwUEEljP6RgoV0MviqvsQ_LD",
         help="Path to the validation split file",
     )
     argparser.add_argument(

@@ -1,0 +1,499 @@
+Processing scene: 09c1414f1b
+Total splats 3383834
+Pruned tensor(91085, device='cuda:0') splats
+Remaining tensor(3292749, device='cuda:0') splats
+Report 2.691769158889% pruned, max pixel error = 0.0003827214241027832, total pixel error = 0.015456069260835648
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 0d2ee665be
+Total splats 1500000
+Pruned tensor(2701, device='cuda:0') splats
+Remaining tensor(1497299, device='cuda:0') splats
+Report 0.18006666666666665% pruned, max pixel error = 3.933906555175781e-05, total pixel error = 0.0002781189978122711
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 13c3e046d7
+Total splats 1670691
+Pruned tensor(1399, device='cuda:0') splats
+Remaining tensor(1669292, device='cuda:0') splats
+Report 0.08373780669196158% pruned, max pixel error = 1.2040138244628906e-05, total pixel error = 9.926781058311462e-05
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 1ada7a0617
+Total splats 1500000
+Pruned tensor(380, device='cuda:0') splats
+Remaining tensor(1499620, device='cuda:0') splats
+Report 0.025333333333333333% pruned, max pixel error = 2.4020671844482422e-05, total pixel error = 0.00019143521785736084
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 21d970d8de
+Total splats 2814833
+Pruned tensor(6300, device='cuda:0') splats
+Remaining tensor(2808533, device='cuda:0') splats
+Report 0.22381434351522808% pruned, max pixel error = 0.0005218982696533203, total pixel error = 0.010233301669359207
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 25f3b7a318
+Total splats 1500000
+Pruned tensor(1500, device='cuda:0') splats
+Remaining tensor(1498500, device='cuda:0') splats
+Report 0.1% pruned, max pixel error = 9.298324584960938e-05, total pixel error = 0.0006017982959747314
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 27dd4da69e
+Total splats 2650189
+Pruned tensor(234268, device='cuda:0') splats
+Remaining tensor(2415921, device='cuda:0') splats
+Report 8.839671434754276% pruned, max pixel error = 0.00042235851287841797, total pixel error = 0.016524801030755043
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 286b55a2bf
+Total splats 1500000
+Pruned tensor(10211, device='cuda:0') splats
+Remaining tensor(1489789, device='cuda:0') splats
+Report 0.6807333333333334% pruned, max pixel error = 6.330013275146484e-05, total pixel error = 0.0006857835687696934
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 31a2c91c43
+Total splats 1500000
+Pruned tensor(5258, device='cuda:0') splats
+Remaining tensor(1494742, device='cuda:0') splats
+Report 0.35053333333333336% pruned, max pixel error = 4.774332046508789e-05, total pixel error = 0.0008525922894477844
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 3864514494
+Total splats 1500000
+Pruned tensor(47826, device='cuda:0') splats
+Remaining tensor(1452174, device='cuda:0') splats
+Report 3.1884% pruned, max pixel error = 0.00018680095672607422, total pixel error = 0.003455914556980133
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 38d58a7a31
+Total splats 2429626
+Pruned tensor(3589, device='cuda:0') splats
+Remaining tensor(2426037, device='cuda:0') splats
+Report 0.14771820848147% pruned, max pixel error = 0.0002752542495727539, total pixel error = 0.004148632287979126
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 3db0a1c8f3
+Total splats 2997565
+Pruned tensor(8199, device='cuda:0') splats
+Remaining tensor(2989366, device='cuda:0') splats
+Report 0.2735220086970591% pruned, max pixel error = 0.0001532435417175293, total pixel error = 0.0026616458781063557
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 3e8bba0176
+Total splats 1500000
+Pruned tensor(785, device='cuda:0') splats
+Remaining tensor(1499215, device='cuda:0') splats
+Report 0.052333333333333336% pruned, max pixel error = 8.96453857421875e-05, total pixel error = 0.0007269792258739471
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 3f15a9266d
+Total splats 1499998
+Pruned tensor(9049, device='cuda:0') splats
+Remaining tensor(1490949, device='cuda:0') splats
+Report 0.6032674710232947% pruned, max pixel error = 0.00019299983978271484, total pixel error = 0.0016768602654337883
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 40aec5fffa
+Total splats 1500000
+Pruned tensor(4572, device='cuda:0') splats
+Remaining tensor(1495428, device='cuda:0') splats
+Report 0.3048% pruned, max pixel error = 5.7250261306762695e-05, total pixel error = 0.0013835113495588303
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 45b0dac5e3
+Total splats 1500000
+Pruned tensor(4535, device='cuda:0') splats
+Remaining tensor(1495465, device='cuda:0') splats
+Report 0.30233333333333334% pruned, max pixel error = 0.0001093149185180664, total pixel error = 0.003008674830198288
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 5748ce6f01
+Total splats 1499999
+Pruned tensor(10633, device='cuda:0') splats
+Remaining tensor(1489366, device='cuda:0') splats
+Report 0.7088671392447595% pruned, max pixel error = 2.9087066650390625e-05, total pixel error = 0.0006872490048408508
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 578511c8a9
+Total splats 4775139
+Pruned tensor(15916, device='cuda:0') splats
+Remaining tensor(4759223, device='cuda:0') splats
+Report 0.33330966910073195% pruned, max pixel error = 0.00021034479141235352, total pixel error = 0.005886875092983246
+Feature backprojection (frames):   0%|          | 0/388 [00:00<?, ?it/s]Feature backprojection (frames):   0%|          | 1/388 [00:00<06:25,  1.00it/s]Feature backprojection (frames):   1%|          | 2/388 [00:01<05:39,  1.14it/s]Feature backprojection (frames):   1%|          | 3/388 [00:02<05:24,  1.19it/s]Feature backprojection (frames):   1%|          | 4/388 [00:03<05:22,  1.19it/s]Feature backprojection (frames):   1%|▏         | 5/388 [00:04<06:27,  1.01s/it]Feature backprojection (frames):   1%|▏         | 5/388 [00:05<07:08,  1.12s/it]
+Traceback (most recent call last):
+  File "/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/backproject_ply_scannetpp.py", line 489, in <module>
+    main(
+  File "/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/backproject_ply_scannetpp.py", line 417, in main
+    features = create_feature_field_lseg(
+  File "/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/backproject_ply_scannetpp.py", line 198, in create_feature_field_lseg
+    target.backward()
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/_tensor.py", line 478, in backward
+    return handle_torch_function(
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/overrides.py", line 1534, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/utils/_device.py", line 62, in __torch_function__
+    return func(*args, **kwargs)
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.37 GiB (GPU 0; 47.54 GiB total capacity; 39.59 GiB already allocated; 3.23 GiB free; 43.94 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Processing scene: 5942004064
+Total splats 1919546
+Pruned tensor(5021, device='cuda:0') splats
+Remaining tensor(1914525, device='cuda:0') splats
+Report 0.26157226760911173% pruned, max pixel error = 4.3392181396484375e-05, total pixel error = 0.0004481482319533825
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 5eb31827b7
+Total splats 1499999
+Pruned tensor(6884, device='cuda:0') splats
+Remaining tensor(1493115, device='cuda:0') splats
+Report 0.45893363928909287% pruned, max pixel error = 0.00030112266540527344, total pixel error = 0.004500254988670349
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 5ee7c22ba0
+Total splats 1499998
+Pruned tensor(13481, device='cuda:0') splats
+Remaining tensor(1486517, device='cuda:0') splats
+Report 0.8987345316460421% pruned, max pixel error = 0.00036454200744628906, total pixel error = 0.008161865174770355
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 5f99900f09
+Total splats 2990202
+Pruned tensor(7596, device='cuda:0') splats
+Remaining tensor(2982606, device='cuda:0') splats
+Report 0.2540296608724093% pruned, max pixel error = 5.7578086853027344e-05, total pixel error = 0.002111845649778843
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 6115eddb86
+Total splats 1610767
+Pruned tensor(3302, device='cuda:0') splats
+Remaining tensor(1607465, device='cuda:0') splats
+Report 0.20499550835099056% pruned, max pixel error = 0.00020140409469604492, total pixel error = 0.0017860336229205132
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 7831862f02
+Total splats 2184428
+Pruned tensor(1721, device='cuda:0') splats
+Remaining tensor(2182707, device='cuda:0') splats
+Report 0.07878492676343647% pruned, max pixel error = 4.617869853973389e-05, total pixel error = 0.00030115246772766113
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 7b6477cb95
+Total splats 1500000
+Pruned tensor(24727, device='cuda:0') splats
+Remaining tensor(1475273, device='cuda:0') splats
+Report 1.6484666666666667% pruned, max pixel error = 0.00018906593322753906, total pixel error = 0.004531115293502808
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 7bc286c1b6
+Total splats 1500000
+Pruned tensor(9071, device='cuda:0') splats
+Remaining tensor(1490929, device='cuda:0') splats
+Report 0.6047333333333333% pruned, max pixel error = 0.00022333860397338867, total pixel error = 0.001568349078297615
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 825d228aec
+Total splats 1499999
+Pruned tensor(37888, device='cuda:0') splats
+Remaining tensor(1462111, device='cuda:0') splats
+Report 2.5258683505789006% pruned, max pixel error = 0.0003154277801513672, total pixel error = 0.010589724406599998
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 9071e139d9
+Total splats 2046982
+Pruned tensor(1773, device='cuda:0') splats
+Remaining tensor(2045209, device='cuda:0') splats
+Report 0.08661531952894555% pruned, max pixel error = 3.927946090698242e-05, total pixel error = 0.00020654499530792236
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: 99fa5c25e1
+Total splats 1499998
+Pruned tensor(1894, device='cuda:0') splats
+Remaining tensor(1498104, device='cuda:0') splats
+Report 0.1262668350224467% pruned, max pixel error = 4.5999884605407715e-05, total pixel error = 0.00013870559632778168
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: a24f64f7fb
+Total splats 1500000
+Pruned tensor(11574, device='cuda:0') splats
+Remaining tensor(1488426, device='cuda:0') splats
+Report 0.7716% pruned, max pixel error = 0.0001462697982788086, total pixel error = 0.002100624144077301
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: a8bf42d646
+Total splats 2198273
+Pruned tensor(2201, device='cuda:0') splats
+Remaining tensor(2196072, device='cuda:0') splats
+Report 0.10012405192621662% pruned, max pixel error = 0.00018584728240966797, total pixel error = 0.0020456016063690186
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: a980334473
+Total splats 1500000
+Pruned tensor(21254, device='cuda:0') splats
+Remaining tensor(1478746, device='cuda:0') splats
+Report 1.4169333333333334% pruned, max pixel error = 0.00019252300262451172, total pixel error = 0.011005893349647522
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: ac48a9b736
+Total splats 4584114
+Pruned tensor(15314, device='cuda:0') splats
+Remaining tensor(4568800, device='cuda:0') splats
+Report 0.3340667356876378% pruned, max pixel error = 6.973743438720703e-05, total pixel error = 0.002432398498058319
+Feature backprojection (frames):   0%|          | 0/391 [00:00<?, ?it/s]Feature backprojection (frames):   0%|          | 1/391 [00:01<12:04,  1.86s/it]Feature backprojection (frames):   1%|          | 2/391 [00:03<10:57,  1.69s/it]Feature backprojection (frames):   1%|          | 3/391 [00:05<11:37,  1.80s/it]Feature backprojection (frames):   1%|          | 4/391 [00:06<10:55,  1.69s/it]Feature backprojection (frames):   1%|▏         | 5/391 [00:08<10:27,  1.63s/it]Feature backprojection (frames):   2%|▏         | 6/391 [00:10<10:29,  1.63s/it]Feature backprojection (frames):   2%|▏         | 6/391 [00:11<12:10,  1.90s/it]
+Traceback (most recent call last):
+  File "/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/backproject_ply_scannetpp.py", line 489, in <module>
+    main(
+  File "/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/backproject_ply_scannetpp.py", line 417, in main
+    features = create_feature_field_lseg(
+  File "/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/backproject_ply_scannetpp.py", line 198, in create_feature_field_lseg
+    target.backward()
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/_tensor.py", line 478, in backward
+    return handle_torch_function(
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/overrides.py", line 1534, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/utils/_device.py", line 62, in __torch_function__
+    return func(*args, **kwargs)
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 8.71 GiB (GPU 0; 47.54 GiB total capacity; 35.36 GiB already allocated; 7.41 GiB free; 39.77 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Processing scene: acd95847c5
+Total splats 1500000
+Pruned tensor(3027, device='cuda:0') splats
+Remaining tensor(1496973, device='cuda:0') splats
+Report 0.20179999999999998% pruned, max pixel error = 0.0002237558364868164, total pixel error = 0.0015510693192481995
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: b0a08200c9
+Total splats 1500000
+Pruned tensor(4777, device='cuda:0') splats
+Remaining tensor(1495223, device='cuda:0') splats
+Report 0.3184666666666667% pruned, max pixel error = 0.0001563429832458496, total pixel error = 0.001145271584391594
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: bcd2436daf
+Total splats 1500000
+Pruned tensor(3093, device='cuda:0') splats
+Remaining tensor(1496907, device='cuda:0') splats
+Report 0.2062% pruned, max pixel error = 4.929304122924805e-05, total pixel error = 0.0011677443981170654
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: bde1e479ad
+Total splats 2577673
+Pruned tensor(3900, device='cuda:0') splats
+Remaining tensor(2573773, device='cuda:0') splats
+Report 0.15129925324119856% pruned, max pixel error = 0.00017452239990234375, total pixel error = 0.0028989017009735107
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: c49a8c6cff
+Total splats 1500000
+Pruned tensor(5440, device='cuda:0') splats
+Remaining tensor(1494560, device='cuda:0') splats
+Report 0.36266666666666664% pruned, max pixel error = 0.00015020370483398438, total pixel error = 0.0012197867035865784
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: c4c04e6d6c
+Total splats 3474035
+Pruned tensor(51565, device='cuda:0') splats
+Remaining tensor(3422470, device='cuda:0') splats
+Report 1.484297078181423% pruned, max pixel error = 0.00127333402633667, total pixel error = 0.030475594103336334
+Feature backprojection (frames):   0%|          | 0/385 [00:00<?, ?it/s]Feature backprojection (frames):   0%|          | 1/385 [00:02<15:39,  2.45s/it]Feature backprojection (frames):   1%|          | 2/385 [00:03<11:12,  1.76s/it]Feature backprojection (frames):   1%|          | 3/385 [00:04<08:57,  1.41s/it]Feature backprojection (frames):   1%|          | 4/385 [00:05<07:15,  1.14s/it]Feature backprojection (frames):   1%|▏         | 5/385 [00:05<05:42,  1.11it/s]Feature backprojection (frames):   2%|▏         | 6/385 [00:06<05:06,  1.24it/s]Feature backprojection (frames):   2%|▏         | 7/385 [00:07<04:27,  1.41it/s]Feature backprojection (frames):   2%|▏         | 8/385 [00:07<03:55,  1.60it/s]Feature backprojection (frames):   2%|▏         | 9/385 [00:07<03:33,  1.76it/s]Feature backprojection (frames):   3%|▎         | 10/385 [00:08<03:30,  1.78it/s]Feature backprojection (frames):   3%|▎         | 11/385 [00:09<03:58,  1.57it/s]Feature backprojection (frames):   3%|▎         | 12/385 [00:10<04:07,  1.51it/s]Feature backprojection (frames):   3%|▎         | 13/385 [00:10<03:58,  1.56it/s]Feature backprojection (frames):   4%|▎         | 14/385 [00:11<03:59,  1.55it/s]Feature backprojection (frames):   4%|▍         | 15/385 [00:12<04:12,  1.47it/s]Feature backprojection (frames):   4%|▍         | 16/385 [00:13<04:48,  1.28it/s]Feature backprojection (frames):   4%|▍         | 17/385 [00:13<04:42,  1.30it/s]Feature backprojection (frames):   5%|▍         | 18/385 [00:14<05:05,  1.20it/s]Feature backprojection (frames):   5%|▍         | 19/385 [00:15<04:54,  1.24it/s]Feature backprojection (frames):   5%|▌         | 20/385 [00:16<04:42,  1.29it/s]Feature backprojection (frames):   5%|▌         | 21/385 [00:16<04:30,  1.35it/s]Feature backprojection (frames):   6%|▌         | 22/385 [00:17<04:47,  1.26it/s]Feature backprojection (frames):   6%|▌         | 23/385 [00:18<04:18,  1.40it/s]Feature backprojection (frames):   6%|▌         | 24/385 [00:19<04:22,  1.38it/s]Feature backprojection (frames):   6%|▋         | 25/385 [00:19<04:06,  1.46it/s]Feature backprojection (frames):   7%|▋         | 26/385 [00:20<03:54,  1.53it/s]Feature backprojection (frames):   7%|▋         | 27/385 [00:20<03:41,  1.62it/s]Feature backprojection (frames):   7%|▋         | 28/385 [00:21<03:55,  1.52it/s]Feature backprojection (frames):   8%|▊         | 29/385 [00:22<03:43,  1.59it/s]Feature backprojection (frames):   8%|▊         | 30/385 [00:22<03:37,  1.63it/s]Feature backprojection (frames):   8%|▊         | 31/385 [00:23<03:41,  1.60it/s]Feature backprojection (frames):   8%|▊         | 32/385 [00:24<03:50,  1.53it/s]Feature backprojection (frames):   9%|▊         | 33/385 [00:24<03:49,  1.53it/s]Feature backprojection (frames):   9%|▉         | 34/385 [00:25<03:44,  1.57it/s]Feature backprojection (frames):   9%|▉         | 35/385 [00:25<03:41,  1.58it/s]Feature backprojection (frames):   9%|▉         | 36/385 [00:26<03:42,  1.57it/s]Feature backprojection (frames):  10%|▉         | 37/385 [00:27<03:47,  1.53it/s]Feature backprojection (frames):  10%|▉         | 38/385 [00:27<03:51,  1.50it/s]Feature backprojection (frames):  10%|█         | 39/385 [00:29<04:35,  1.25it/s]Feature backprojection (frames):  10%|█         | 40/385 [00:29<04:40,  1.23it/s]Feature backprojection (frames):  11%|█         | 41/385 [00:30<05:01,  1.14it/s]Feature backprojection (frames):  11%|█         | 42/385 [00:31<05:12,  1.10it/s]Feature backprojection (frames):  11%|█         | 43/385 [00:32<05:19,  1.07it/s]Feature backprojection (frames):  11%|█▏        | 44/385 [00:34<05:42,  1.00s/it]Feature backprojection (frames):  12%|█▏        | 45/385 [00:35<05:50,  1.03s/it]Feature backprojection (frames):  12%|█▏        | 46/385 [00:36<05:56,  1.05s/it]Feature backprojection (frames):  12%|█▏        | 47/385 [00:37<05:58,  1.06s/it]Feature backprojection (frames):  12%|█▏        | 48/385 [00:38<06:15,  1.11s/it]Feature backprojection (frames):  13%|█▎        | 49/385 [00:39<06:25,  1.15s/it]Feature backprojection (frames):  13%|█▎        | 50/385 [00:41<06:31,  1.17s/it]Feature backprojection (frames):  13%|█▎        | 51/385 [00:42<06:33,  1.18s/it]Feature backprojection (frames):  14%|█▎        | 52/385 [00:43<06:42,  1.21s/it]Feature backprojection (frames):  14%|█▍        | 53/385 [00:44<06:44,  1.22s/it]Feature backprojection (frames):  14%|█▍        | 54/385 [00:45<06:41,  1.21s/it]Feature backprojection (frames):  14%|█▍        | 55/385 [00:47<06:45,  1.23s/it]Feature backprojection (frames):  15%|█▍        | 56/385 [00:48<06:52,  1.25s/it]Feature backprojection (frames):  15%|█▍        | 57/385 [00:49<07:05,  1.30s/it]Feature backprojection (frames):  15%|█▌        | 58/385 [00:51<07:03,  1.30s/it]Feature backprojection (frames):  15%|█▌        | 59/385 [00:52<07:09,  1.32s/it]Feature backprojection (frames):  16%|█▌        | 60/385 [00:53<06:41,  1.24s/it]Feature backprojection (frames):  16%|█▌        | 61/385 [00:54<06:07,  1.13s/it]Feature backprojection (frames):  16%|█▌        | 62/385 [00:55<05:41,  1.06s/it]Feature backprojection (frames):  16%|█▋        | 63/385 [00:56<05:32,  1.03s/it]Feature backprojection (frames):  17%|█▋        | 64/385 [00:56<04:46,  1.12it/s]Feature backprojection (frames):  17%|█▋        | 65/385 [00:57<04:17,  1.24it/s]Feature backprojection (frames):  17%|█▋        | 66/385 [00:58<04:09,  1.28it/s]Feature backprojection (frames):  17%|█▋        | 67/385 [00:59<04:05,  1.30it/s]Feature backprojection (frames):  18%|█▊        | 68/385 [00:59<03:56,  1.34it/s]Feature backprojection (frames):  18%|█▊        | 69/385 [01:00<03:50,  1.37it/s]Feature backprojection (frames):  18%|█▊        | 70/385 [01:01<03:46,  1.39it/s]Feature backprojection (frames):  18%|█▊        | 71/385 [01:01<03:43,  1.40it/s]Feature backprojection (frames):  19%|█▊        | 72/385 [01:02<03:41,  1.41it/s]Feature backprojection (frames):  19%|█▉        | 73/385 [01:03<03:38,  1.43it/s]Feature backprojection (frames):  19%|█▉        | 74/385 [01:03<03:40,  1.41it/s]Feature backprojection (frames):  19%|█▉        | 75/385 [01:04<03:44,  1.38it/s]Feature backprojection (frames):  20%|█▉        | 76/385 [01:05<03:48,  1.35it/s]Feature backprojection (frames):  20%|██        | 77/385 [01:06<04:00,  1.28it/s]Feature backprojection (frames):  20%|██        | 78/385 [01:07<04:03,  1.26it/s]Feature backprojection (frames):  21%|██        | 79/385 [01:07<04:06,  1.24it/s]Feature backprojection (frames):  21%|██        | 80/385 [01:08<04:14,  1.20it/s]Feature backprojection (frames):  21%|██        | 81/385 [01:09<04:21,  1.16it/s]Feature backprojection (frames):  21%|██▏       | 82/385 [01:10<04:49,  1.05it/s]Feature backprojection (frames):  22%|██▏       | 83/385 [01:12<05:24,  1.07s/it]Feature backprojection (frames):  22%|██▏       | 84/385 [01:13<05:44,  1.14s/it]Feature backprojection (frames):  22%|██▏       | 85/385 [01:14<06:01,  1.21s/it]Feature backprojection (frames):  22%|██▏       | 86/385 [01:16<06:14,  1.25s/it]Feature backprojection (frames):  23%|██▎       | 87/385 [01:18<06:49,  1.37s/it]Feature backprojection (frames):  23%|██▎       | 88/385 [01:19<06:51,  1.38s/it]Feature backprojection (frames):  23%|██▎       | 89/385 [01:20<06:55,  1.40s/it]Feature backprojection (frames):  23%|██▎       | 90/385 [01:22<07:10,  1.46s/it]Feature backprojection (frames):  24%|██▎       | 91/385 [01:23<07:04,  1.45s/it]Feature backprojection (frames):  24%|██▍       | 92/385 [01:25<07:13,  1.48s/it]Feature backprojection (frames):  24%|██▍       | 93/385 [01:26<07:14,  1.49s/it]Feature backprojection (frames):  24%|██▍       | 94/385 [01:28<07:01,  1.45s/it]Feature backprojection (frames):  25%|██▍       | 95/385 [01:29<07:01,  1.45s/it]Feature backprojection (frames):  25%|██▍       | 96/385 [01:30<05:30,  1.15s/it]Feature backprojection (frames):  25%|██▌       | 97/385 [01:30<04:22,  1.10it/s]Feature backprojection (frames):  25%|██▌       | 98/385 [01:30<03:36,  1.33it/s]Feature backprojection (frames):  26%|██▌       | 99/385 [01:31<03:02,  1.57it/s]Feature backprojection (frames):  26%|██▌       | 100/385 [01:31<02:40,  1.78it/s]Feature backprojection (frames):  26%|██▌       | 101/385 [01:32<02:23,  1.98it/s]Feature backprojection (frames):  26%|██▋       | 102/385 [01:32<02:13,  2.12it/s]Feature backprojection (frames):  27%|██▋       | 103/385 [01:32<02:03,  2.28it/s]Feature backprojection (frames):  27%|██▋       | 104/385 [01:33<01:57,  2.40it/s]Feature backprojection (frames):  27%|██▋       | 105/385 [01:33<01:52,  2.49it/s]Feature backprojection (frames):  28%|██▊       | 106/385 [01:33<01:49,  2.55it/s]Feature backprojection (frames):  28%|██▊       | 107/385 [01:34<01:47,  2.59it/s]Feature backprojection (frames):  28%|██▊       | 108/385 [01:34<01:45,  2.62it/s]Feature backprojection (frames):  28%|██▊       | 109/385 [01:35<01:44,  2.64it/s]Feature backprojection (frames):  29%|██▊       | 110/385 [01:35<01:43,  2.65it/s]Feature backprojection (frames):  29%|██▉       | 111/385 [01:35<01:43,  2.64it/s]Feature backprojection (frames):  29%|██▉       | 112/385 [01:36<01:44,  2.61it/s]Feature backprojection (frames):  29%|██▉       | 113/385 [01:36<01:44,  2.60it/s]Feature backprojection (frames):  30%|██▉       | 114/385 [01:36<01:45,  2.58it/s]Feature backprojection (frames):  30%|██▉       | 115/385 [01:37<01:45,  2.57it/s]Feature backprojection (frames):  30%|███       | 116/385 [01:37<01:44,  2.57it/s]Feature backprojection (frames):  30%|███       | 117/385 [01:38<01:44,  2.58it/s]Feature backprojection (frames):  31%|███       | 118/385 [01:39<02:47,  1.60it/s]Feature backprojection (frames):  31%|███       | 119/385 [01:40<03:39,  1.21it/s]Feature backprojection (frames):  31%|███       | 120/385 [01:41<04:06,  1.07it/s]Feature backprojection (frames):  31%|███▏      | 121/385 [01:42<04:03,  1.08it/s]Feature backprojection (frames):  32%|███▏      | 122/385 [01:43<04:10,  1.05it/s]Feature backprojection (frames):  32%|███▏      | 123/385 [01:44<04:01,  1.08it/s]Feature backprojection (frames):  32%|███▏      | 124/385 [01:45<03:48,  1.14it/s]Feature backprojection (frames):  32%|███▏      | 125/385 [01:46<03:55,  1.10it/s]Feature backprojection (frames):  33%|███▎      | 126/385 [01:47<04:20,  1.01s/it]Feature backprojection (frames):  33%|███▎      | 127/385 [01:48<04:46,  1.11s/it]Feature backprojection (frames):  33%|███▎      | 128/385 [01:50<05:03,  1.18s/it]Feature backprojection (frames):  34%|███▎      | 129/385 [01:51<05:14,  1.23s/it]Feature backprojection (frames):  34%|███▍      | 130/385 [01:52<05:20,  1.26s/it]Feature backprojection (frames):  34%|███▍      | 131/385 [01:53<04:34,  1.08s/it]Feature backprojection (frames):  34%|███▍      | 132/385 [01:54<04:36,  1.09s/it]Feature backprojection (frames):  35%|███▍      | 133/385 [01:55<04:50,  1.15s/it]Feature backprojection (frames):  35%|███▍      | 134/385 [01:57<04:54,  1.17s/it]Feature backprojection (frames):  35%|███▌      | 135/385 [01:58<05:13,  1.26s/it]Feature backprojection (frames):  35%|███▌      | 136/385 [02:00<05:23,  1.30s/it]Feature backprojection (frames):  36%|███▌      | 137/385 [02:01<05:30,  1.33s/it]Feature backprojection (frames):  36%|███▌      | 138/385 [02:02<05:32,  1.35s/it]Feature backprojection (frames):  36%|███▌      | 139/385 [02:03<04:41,  1.14s/it]Feature backprojection (frames):  36%|███▋      | 140/385 [02:03<03:49,  1.07it/s]Feature backprojection (frames):  37%|███▋      | 141/385 [02:04<03:18,  1.23it/s]Feature backprojection (frames):  37%|███▋      | 142/385 [02:05<02:56,  1.37it/s]Feature backprojection (frames):  37%|███▋      | 143/385 [02:05<02:55,  1.38it/s]Feature backprojection (frames):  37%|███▋      | 144/385 [02:06<02:51,  1.41it/s]Feature backprojection (frames):  38%|███▊      | 145/385 [02:07<02:49,  1.42it/s]Feature backprojection (frames):  38%|███▊      | 146/385 [02:07<02:48,  1.42it/s]Feature backprojection (frames):  38%|███▊      | 147/385 [02:08<02:54,  1.37it/s]Feature backprojection (frames):  38%|███▊      | 148/385 [02:09<03:00,  1.31it/s]Feature backprojection (frames):  39%|███▊      | 149/385 [02:10<03:09,  1.25it/s]Feature backprojection (frames):  39%|███▉      | 150/385 [02:11<03:24,  1.15it/s]Feature backprojection (frames):  39%|███▉      | 151/385 [02:12<03:41,  1.06it/s]Feature backprojection (frames):  39%|███▉      | 152/385 [02:13<04:04,  1.05s/it]Feature backprojection (frames):  40%|███▉      | 153/385 [02:15<04:20,  1.12s/it]Feature backprojection (frames):  40%|████      | 154/385 [02:16<04:34,  1.19s/it]Feature backprojection (frames):  40%|████      | 155/385 [02:17<04:45,  1.24s/it]Feature backprojection (frames):  41%|████      | 156/385 [02:19<05:29,  1.44s/it]Feature backprojection (frames):  41%|████      | 157/385 [02:21<05:49,  1.53s/it]Feature backprojection (frames):  41%|████      | 158/385 [02:22<05:47,  1.53s/it]Feature backprojection (frames):  41%|████▏     | 159/385 [02:24<05:45,  1.53s/it]Feature backprojection (frames):  42%|████▏     | 160/385 [02:25<05:38,  1.51s/it]Feature backprojection (frames):  42%|████▏     | 161/385 [02:27<05:41,  1.53s/it]Feature backprojection (frames):  42%|████▏     | 162/385 [02:29<05:39,  1.52s/it]Feature backprojection (frames):  42%|████▏     | 163/385 [02:30<05:43,  1.55s/it]Feature backprojection (frames):  43%|████▎     | 164/385 [02:32<05:42,  1.55s/it]Feature backprojection (frames):  43%|████▎     | 165/385 [02:33<05:50,  1.59s/it]Feature backprojection (frames):  43%|████▎     | 166/385 [02:35<06:03,  1.66s/it]Feature backprojection (frames):  43%|████▎     | 167/385 [02:37<06:09,  1.70s/it]Feature backprojection (frames):  44%|████▎     | 168/385 [02:39<06:11,  1.71s/it]Feature backprojection (frames):  44%|████▍     | 169/385 [02:41<06:25,  1.78s/it]Feature backprojection (frames):  44%|████▍     | 170/385 [02:43<06:27,  1.80s/it]Feature backprojection (frames):  44%|████▍     | 171/385 [02:44<06:29,  1.82s/it]Feature backprojection (frames):  45%|████▍     | 172/385 [02:46<06:33,  1.85s/it]Feature backprojection (frames):  45%|████▍     | 173/385 [02:48<06:32,  1.85s/it]Feature backprojection (frames):  45%|████▌     | 174/385 [02:50<06:32,  1.86s/it]Feature backprojection (frames):  45%|████▌     | 175/385 [02:52<06:30,  1.86s/it]Feature backprojection (frames):  46%|████▌     | 176/385 [02:54<06:22,  1.83s/it]Feature backprojection (frames):  46%|████▌     | 177/385 [02:55<06:21,  1.83s/it]Feature backprojection (frames):  46%|████▌     | 178/385 [02:57<06:16,  1.82s/it]Feature backprojection (frames):  46%|████▋     | 179/385 [02:59<06:05,  1.77s/it]Feature backprojection (frames):  47%|████▋     | 180/385 [03:01<06:04,  1.78s/it]Feature backprojection (frames):  47%|████▋     | 181/385 [03:02<05:49,  1.71s/it]Feature backprojection (frames):  47%|████▋     | 182/385 [03:03<04:31,  1.34s/it]Feature backprojection (frames):  48%|████▊     | 183/385 [03:03<03:45,  1.12s/it]Feature backprojection (frames):  48%|████▊     | 184/385 [03:04<03:04,  1.09it/s]Feature backprojection (frames):  48%|████▊     | 185/385 [03:04<02:45,  1.21it/s]Feature backprojection (frames):  48%|████▊     | 186/385 [03:06<03:06,  1.06it/s]Feature backprojection (frames):  49%|████▊     | 187/385 [03:06<02:38,  1.25it/s]Feature backprojection (frames):  49%|████▉     | 188/385 [03:07<02:28,  1.33it/s]Feature backprojection (frames):  49%|████▉     | 189/385 [03:07<02:23,  1.36it/s]Feature backprojection (frames):  49%|████▉     | 190/385 [03:08<02:07,  1.53it/s]Feature backprojection (frames):  50%|████▉     | 191/385 [03:09<02:13,  1.46it/s]Feature backprojection (frames):  50%|████▉     | 192/385 [03:09<02:00,  1.60it/s]Feature backprojection (frames):  50%|█████     | 193/385 [03:10<02:13,  1.44it/s]Feature backprojection (frames):  50%|█████     | 194/385 [03:11<02:33,  1.25it/s]Feature backprojection (frames):  51%|█████     | 195/385 [03:12<02:47,  1.13it/s]Feature backprojection (frames):  51%|█████     | 196/385 [03:13<02:57,  1.07it/s]Feature backprojection (frames):  51%|█████     | 197/385 [03:15<03:17,  1.05s/it]Feature backprojection (frames):  51%|█████▏    | 198/385 [03:16<03:29,  1.12s/it]Feature backprojection (frames):  52%|█████▏    | 199/385 [03:17<03:40,  1.18s/it]Feature backprojection (frames):  52%|█████▏    | 200/385 [03:19<03:57,  1.28s/it]Feature backprojection (frames):  52%|█████▏    | 201/385 [03:19<03:15,  1.06s/it]Feature backprojection (frames):  52%|█████▏    | 202/385 [03:20<02:46,  1.10it/s]Feature backprojection (frames):  53%|█████▎    | 203/385 [03:20<02:27,  1.23it/s]Feature backprojection (frames):  53%|█████▎    | 204/385 [03:21<02:15,  1.34it/s]Feature backprojection (frames):  53%|█████▎    | 205/385 [03:22<02:21,  1.27it/s]Feature backprojection (frames):  54%|█████▎    | 206/385 [03:23<02:17,  1.31it/s]Feature backprojection (frames):  54%|█████▍    | 207/385 [03:23<02:11,  1.35it/s]Feature backprojection (frames):  54%|█████▍    | 208/385 [03:24<02:07,  1.39it/s]Feature backprojection (frames):  54%|█████▍    | 209/385 [03:25<02:03,  1.43it/s]Feature backprojection (frames):  55%|█████▍    | 210/385 [03:25<01:59,  1.46it/s]Feature backprojection (frames):  55%|█████▍    | 211/385 [03:26<01:55,  1.51it/s]Feature backprojection (frames):  55%|█████▌    | 212/385 [03:26<01:51,  1.56it/s]Feature backprojection (frames):  55%|█████▌    | 213/385 [03:27<01:48,  1.58it/s]Feature backprojection (frames):  56%|█████▌    | 214/385 [03:28<01:55,  1.48it/s]Feature backprojection (frames):  56%|█████▌    | 215/385 [03:29<02:03,  1.38it/s]Feature backprojection (frames):  56%|█████▌    | 216/385 [03:29<02:08,  1.31it/s]Feature backprojection (frames):  56%|█████▋    | 217/385 [03:30<02:12,  1.26it/s]Feature backprojection (frames):  57%|█████▋    | 218/385 [03:31<02:22,  1.17it/s]Feature backprojection (frames):  57%|█████▋    | 219/385 [03:32<02:33,  1.08it/s]Feature backprojection (frames):  57%|█████▋    | 220/385 [03:34<02:40,  1.03it/s]Feature backprojection (frames):  57%|█████▋    | 221/385 [03:35<02:53,  1.06s/it]Feature backprojection (frames):  58%|█████▊    | 222/385 [03:36<02:56,  1.09s/it]Feature backprojection (frames):  58%|█████▊    | 223/385 [03:37<03:07,  1.15s/it]Feature backprojection (frames):  58%|█████▊    | 224/385 [03:38<03:11,  1.19s/it]Feature backprojection (frames):  58%|█████▊    | 225/385 [03:40<03:15,  1.22s/it]Feature backprojection (frames):  59%|█████▊    | 226/385 [03:41<03:16,  1.24s/it]Feature backprojection (frames):  59%|█████▉    | 227/385 [03:42<03:10,  1.20s/it]Feature backprojection (frames):  59%|█████▉    | 228/385 [03:43<03:04,  1.17s/it]Feature backprojection (frames):  59%|█████▉    | 229/385 [03:45<03:05,  1.19s/it]Feature backprojection (frames):  60%|█████▉    | 230/385 [03:46<03:08,  1.21s/it]Feature backprojection (frames):  60%|██████    | 231/385 [03:47<03:12,  1.25s/it]Feature backprojection (frames):  60%|██████    | 232/385 [03:48<03:13,  1.26s/it]Feature backprojection (frames):  61%|██████    | 233/385 [03:50<03:12,  1.27s/it]Feature backprojection (frames):  61%|██████    | 234/385 [03:51<03:06,  1.24s/it]Feature backprojection (frames):  61%|██████    | 235/385 [03:52<02:55,  1.17s/it]Feature backprojection (frames):  61%|██████▏   | 236/385 [03:53<02:46,  1.12s/it]Feature backprojection (frames):  62%|██████▏   | 237/385 [03:54<02:42,  1.09s/it]Feature backprojection (frames):  62%|██████▏   | 238/385 [03:55<02:47,  1.14s/it]Feature backprojection (frames):  62%|██████▏   | 239/385 [03:56<02:54,  1.19s/it]Feature backprojection (frames):  62%|██████▏   | 240/385 [03:58<03:01,  1.25s/it]Feature backprojection (frames):  63%|██████▎   | 241/385 [03:59<03:04,  1.28s/it]Feature backprojection (frames):  63%|██████▎   | 242/385 [04:00<03:01,  1.27s/it]Feature backprojection (frames):  63%|██████▎   | 243/385 [04:02<02:55,  1.23s/it]Feature backprojection (frames):  63%|██████▎   | 244/385 [04:03<02:46,  1.18s/it]Feature backprojection (frames):  64%|██████▎   | 245/385 [04:04<02:37,  1.13s/it]Feature backprojection (frames):  64%|██████▍   | 246/385 [04:05<02:29,  1.08s/it]Feature backprojection (frames):  64%|██████▍   | 247/385 [04:06<02:25,  1.06s/it]Feature backprojection (frames):  64%|██████▍   | 248/385 [04:06<02:16,  1.00it/s]Feature backprojection (frames):  65%|██████▍   | 249/385 [04:07<02:10,  1.05it/s]Feature backprojection (frames):  65%|██████▍   | 250/385 [04:08<02:06,  1.07it/s]Feature backprojection (frames):  65%|██████▌   | 251/385 [04:09<02:06,  1.06it/s]Feature backprojection (frames):  65%|██████▌   | 252/385 [04:10<02:09,  1.03it/s]Feature backprojection (frames):  66%|██████▌   | 253/385 [04:12<02:23,  1.08s/it]Feature backprojection (frames):  66%|██████▌   | 254/385 [04:13<02:26,  1.12s/it]Feature backprojection (frames):  66%|██████▌   | 255/385 [04:14<02:46,  1.28s/it]Feature backprojection (frames):  66%|██████▋   | 256/385 [04:16<02:51,  1.33s/it]Feature backprojection (frames):  67%|██████▋   | 257/385 [04:18<03:04,  1.44s/it]Feature backprojection (frames):  67%|██████▋   | 258/385 [04:19<03:05,  1.46s/it]Feature backprojection (frames):  67%|██████▋   | 259/385 [04:20<02:41,  1.28s/it]Feature backprojection (frames):  68%|██████▊   | 260/385 [04:22<02:50,  1.36s/it]Feature backprojection (frames):  68%|██████▊   | 261/385 [04:22<02:28,  1.20s/it]Feature backprojection (frames):  68%|██████▊   | 262/385 [04:23<02:12,  1.07s/it]Feature backprojection (frames):  68%|██████▊   | 263/385 [04:24<02:00,  1.01it/s]Feature backprojection (frames):  69%|██████▊   | 264/385 [04:25<01:50,  1.10it/s]Feature backprojection (frames):  69%|██████▉   | 265/385 [04:25<01:42,  1.17it/s]Feature backprojection (frames):  69%|██████▉   | 266/385 [04:26<01:35,  1.24it/s]Feature backprojection (frames):  69%|██████▉   | 267/385 [04:27<01:30,  1.31it/s]Feature backprojection (frames):  70%|██████▉   | 268/385 [04:27<01:25,  1.37it/s]Feature backprojection (frames):  70%|██████▉   | 269/385 [04:28<01:20,  1.43it/s]Feature backprojection (frames):  70%|███████   | 270/385 [04:29<01:18,  1.47it/s]Feature backprojection (frames):  70%|███████   | 271/385 [04:29<01:15,  1.51it/s]Feature backprojection (frames):  71%|███████   | 272/385 [04:30<01:13,  1.54it/s]Feature backprojection (frames):  71%|███████   | 273/385 [04:30<01:11,  1.57it/s]Feature backprojection (frames):  71%|███████   | 274/385 [04:31<01:09,  1.59it/s]Feature backprojection (frames):  71%|███████▏  | 275/385 [04:32<01:08,  1.61it/s]Feature backprojection (frames):  72%|███████▏  | 276/385 [04:32<01:07,  1.62it/s]Feature backprojection (frames):  72%|███████▏  | 277/385 [04:33<01:06,  1.61it/s]Feature backprojection (frames):  72%|███████▏  | 278/385 [04:34<01:07,  1.59it/s]Feature backprojection (frames):  72%|███████▏  | 279/385 [04:34<01:10,  1.51it/s]Feature backprojection (frames):  73%|███████▎  | 280/385 [04:35<01:11,  1.47it/s]Feature backprojection (frames):  73%|███████▎  | 281/385 [04:35<01:04,  1.61it/s]Feature backprojection (frames):  73%|███████▎  | 282/385 [04:36<00:59,  1.72it/s]Feature backprojection (frames):  74%|███████▎  | 283/385 [04:36<00:56,  1.80it/s]Feature backprojection (frames):  74%|███████▍  | 284/385 [04:37<00:55,  1.82it/s]Feature backprojection (frames):  74%|███████▍  | 285/385 [04:38<00:54,  1.83it/s]Feature backprojection (frames):  74%|███████▍  | 286/385 [04:38<00:54,  1.83it/s]Feature backprojection (frames):  75%|███████▍  | 287/385 [04:39<00:54,  1.79it/s]Feature backprojection (frames):  75%|███████▍  | 288/385 [04:39<00:54,  1.77it/s]Feature backprojection (frames):  75%|███████▌  | 289/385 [04:40<00:55,  1.73it/s]Feature backprojection (frames):  75%|███████▌  | 290/385 [04:40<00:55,  1.71it/s]Feature backprojection (frames):  76%|███████▌  | 291/385 [04:42<01:09,  1.36it/s]Feature backprojection (frames):  76%|███████▌  | 292/385 [04:43<01:26,  1.08it/s]Feature backprojection (frames):  76%|███████▌  | 293/385 [04:44<01:24,  1.09it/s]Feature backprojection (frames):  76%|███████▋  | 294/385 [04:45<01:39,  1.10s/it]Feature backprojection (frames):  77%|███████▋  | 295/385 [04:47<01:57,  1.30s/it]Feature backprojection (frames):  77%|███████▋  | 296/385 [04:48<01:35,  1.07s/it]Feature backprojection (frames):  77%|███████▋  | 297/385 [04:49<01:53,  1.29s/it]Feature backprojection (frames):  77%|███████▋  | 298/385 [04:50<01:28,  1.02s/it]Feature backprojection (frames):  78%|███████▊  | 299/385 [04:51<01:38,  1.14s/it]Feature backprojection (frames):  78%|███████▊  | 300/385 [04:53<01:48,  1.28s/it]Feature backprojection (frames):  78%|███████▊  | 301/385 [04:53<01:27,  1.04s/it]Feature backprojection (frames):  78%|███████▊  | 302/385 [04:55<01:29,  1.08s/it]Feature backprojection (frames):  79%|███████▊  | 303/385 [04:55<01:24,  1.03s/it]Feature backprojection (frames):  79%|███████▉  | 304/385 [04:57<01:35,  1.17s/it]Feature backprojection (frames):  79%|███████▉  | 305/385 [04:58<01:27,  1.10s/it]Feature backprojection (frames):  79%|███████▉  | 306/385 [04:59<01:19,  1.01s/it]Feature backprojection (frames):  80%|███████▉  | 307/385 [04:59<01:12,  1.08it/s]Feature backprojection (frames):  80%|████████  | 308/385 [05:00<01:10,  1.09it/s]Feature backprojection (frames):  80%|████████  | 309/385 [05:01<01:04,  1.18it/s]Feature backprojection (frames):  81%|████████  | 310/385 [05:02<00:56,  1.32it/s]Feature backprojection (frames):  81%|████████  | 311/385 [05:03<01:01,  1.20it/s]Feature backprojection (frames):  81%|████████  | 312/385 [05:03<00:55,  1.31it/s]Feature backprojection (frames):  81%|████████▏ | 313/385 [05:04<00:59,  1.21it/s]Feature backprojection (frames):  82%|████████▏ | 314/385 [05:05<00:54,  1.29it/s]Feature backprojection (frames):  82%|████████▏ | 315/385 [05:05<00:50,  1.38it/s]Feature backprojection (frames):  82%|████████▏ | 316/385 [05:07<01:11,  1.03s/it]Feature backprojection (frames):  82%|████████▏ | 317/385 [05:08<01:05,  1.04it/s]Feature backprojection (frames):  83%|████████▎ | 318/385 [05:10<01:19,  1.19s/it]Feature backprojection (frames):  83%|████████▎ | 319/385 [05:11<01:22,  1.25s/it]Feature backprojection (frames):  83%|████████▎ | 320/385 [05:12<01:09,  1.07s/it]Feature backprojection (frames):  83%|████████▎ | 321/385 [05:13<01:07,  1.05s/it]Feature backprojection (frames):  83%|████████▎ | 321/385 [05:14<01:02,  1.02it/s]
+Traceback (most recent call last):
+  File "/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/backproject_ply_scannetpp.py", line 489, in <module>
+    main(
+  File "/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/backproject_ply_scannetpp.py", line 417, in main
+    features = create_feature_field_lseg(
+  File "/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/backproject_ply_scannetpp.py", line 198, in create_feature_field_lseg
+    target.backward()
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/_tensor.py", line 478, in backward
+    return handle_torch_function(
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/overrides.py", line 1534, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/utils/_device.py", line 62, in __torch_function__
+    return func(*args, **kwargs)
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/scratch_net/schusch/qimaqi/miniconda3/envs/3dgsback/lib/python3.10/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.71 GiB (GPU 0; 47.54 GiB total capacity; 37.05 GiB already allocated; 4.79 GiB free; 42.38 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Processing scene: c50d2d1d42
+Total splats 1499999
+Pruned tensor(719, device='cuda:0') splats
+Remaining tensor(1499280, device='cuda:0') splats
+Report 0.04793336528891019% pruned, max pixel error = 0.0002104640007019043, total pixel error = 0.0009121596813201904
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: c5439f4607
+Total splats 1658586
+Pruned tensor(6291, device='cuda:0') splats
+Remaining tensor(1652295, device='cuda:0') splats
+Report 0.3792989932388191% pruned, max pixel error = 0.00028449296951293945, total pixel error = 0.0058251298032701015
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: cc5237fd77
+Total splats 1499999
+Pruned tensor(5799, device='cuda:0') splats
+Remaining tensor(1494200, device='cuda:0') splats
+Report 0.38660025773350515% pruned, max pixel error = 0.00010943412780761719, total pixel error = 0.0009012389928102493
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: d755b3d9d8
+Total splats 1499999
+Pruned tensor(1254, device='cuda:0') splats
+Remaining tensor(1498745, device='cuda:0') splats
+Report 0.08360005573337048% pruned, max pixel error = 4.0531158447265625e-05, total pixel error = 0.0003359392285346985
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: e398684d27
+Total splats 1500000
+Pruned tensor(3454, device='cuda:0') splats
+Remaining tensor(1496546, device='cuda:0') splats
+Report 0.23026666666666668% pruned, max pixel error = 4.267692565917969e-05, total pixel error = 0.0009022653102874756
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: e7af285f7d
+Total splats 1500000
+Pruned tensor(9776, device='cuda:0') splats
+Remaining tensor(1490224, device='cuda:0') splats
+Report 0.6517333333333333% pruned, max pixel error = 1.2218952178955078e-05, total pixel error = 0.00021971110254526138
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: f2dc06b1d2
+Total splats 1499998
+Pruned tensor(16564, device='cuda:0') splats
+Remaining tensor(1483434, device='cuda:0') splats
+Report 1.1042681390241853% pruned, max pixel error = 0.00040268898010253906, total pixel error = 0.006454978138208389
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: f3685d06a9
+Total splats 1500000
+Pruned tensor(14319, device='cuda:0') splats
+Remaining tensor(1485681, device='cuda:0') splats
+Report 0.9546000000000001% pruned, max pixel error = 0.00012022256851196289, total pixel error = 0.002630479633808136
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: f3d64c30f8
+Total splats 1779443
+Pruned tensor(31206, device='cuda:0') splats
+Remaining tensor(1748237, device='cuda:0') splats
+Report 1.753694835968334% pruned, max pixel error = 0.00026088953018188477, total pixel error = 0.0095968097448349
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: f9f95681fd
+Total splats 1500000
+Pruned tensor(21555, device='cuda:0') splats
+Remaining tensor(1478445, device='cuda:0') splats
+Report 1.437% pruned, max pixel error = 3.2514333724975586e-05, total pixel error = 0.0006365757435560226
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Processing scene: fb5a96b1a2
+Total splats 1893903
+Pruned tensor(2273, device='cuda:0') splats
+Remaining tensor(1891630, device='cuda:0') splats
+Report 0.12001670624102712% pruned, max pixel error = 8.83936882019043e-05, total pixel error = 0.0009272471070289612
+Feature file already exists, skipping feature extraction.
+XYZ file already exists, skipping XYZ extraction.
+Error in LSeg feature extraction: local variable 'features' referenced before assignment
+Namespace(split='/usr/bmicnas02/data-biwi-01/qimaqi_data/workspace/neurips_2025/3dgs-gradient-backprojection-benchmark/splits/scannetpp_val.txt', rescale=0)
+09c1414f1b
+0d2ee665be
+13c3e046d7
+1ada7a0617
+21d970d8de
+25f3b7a318
+27dd4da69e
+286b55a2bf
+31a2c91c43
+3864514494
+38d58a7a31
+3db0a1c8f3
+3e8bba0176
+3f15a9266d
+40aec5fffa
+45b0dac5e3
+5748ce6f01
+578511c8a9
+5942004064
+5eb31827b7
+5ee7c22ba0
+5f99900f09
+6115eddb86
+7831862f02
+7b6477cb95
+7bc286c1b6
+825d228aec
+9071e139d9
+99fa5c25e1
+a24f64f7fb
+a8bf42d646
+a980334473
+ac48a9b736
+acd95847c5
+b0a08200c9
+bcd2436daf
+bde1e479ad
+c49a8c6cff
+c4c04e6d6c
+c50d2d1d42
+c5439f4607
+cc5237fd77
+d755b3d9d8
+e398684d27
+e7af285f7d
+f2dc06b1d2
+f3685d06a9
+f3d64c30f8
+f9f95681fd
+fb5a96b1a2
